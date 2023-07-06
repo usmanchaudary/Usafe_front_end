@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Incident Reporting</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../css/header.css" >
+    <script src="../../Templates/Header.js"></script>
+    <script src="https://kit.fontawesome.com/b576bd8d3c.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script src="../../Templates/initialCommon.js"></script>
+    <script src="../../Js/Common/Initials.js"></script>
+    <script src="../../Js/Common/Teminal.js"></script>
+    <script src="../../Templates/TerminalCommon.js"></script>
+</head>
+<body>
+    <div id="header"></div>
+    <div class="container">
+        <form id="safeUnsafeAct">
+           
+            <div id="initialCommonFields"></div>
+            <div class="form-group">
+                <label for="actType">Action</label>
+                <textarea class="form-control" placeholder="Action" id="Action" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="actType">Event Type</label>
+                <select class="form-control" id="EventType" rows="3">
+                    <option selected disabled hidden>Event Type</option>
+                    <option>Environmental</option>
+                    <option>Minor Injuries</option>
+                    <option>Near Miss (Type A)</option>
+                    <option>Near Miss (Type B)</option>
+                    <option>Near Miss (Type C)</option>
+                    <option>Illness</option>
+                    <option>Injury</option>
+                    <option>Property Damage</option>
+                </select>
+            </div> 
+            <div class="form-group">
+                <label for="actType">Event Sub Type</label>
+                <select class="form-control" id="EventType" rows="3">
+                    <option selected disabled hidden>Event Sub Type</option>
+                    <option>Potential Injuries</option>
+                    <option>Potential Environment</option>
+                    <option>Potential Property Damage</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="actType">Reason</label>
+                <select class="form-control" id="EventType" rows="3">
+                    <option selected disabled hidden>Reason</option>
+                    <option>Safe Travel</option>
+                    <option>Manual Trolly</option>
+                    <option>Ergonomics</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Is there any person involved</label> <br>
+                <input id="" name="personInvolvement" value="Yes" type="radio" />
+                <label>Yes</label> &nbsp;
+                <input id="" value="No" type="radio"  name="personInvolvement" />
+                <label>No</label>
+            </div>
+
+            <div class="form-group">
+                <label>Security Informed</label> <br>
+                <input id="" name="securityInformed" value="Yes" type="radio" />
+                <label>Yes</label> &nbsp;
+                <input id="" value="No" type="radio"  name="securityInformed" />
+                <label>No</label>
+            </div>
+
+            <div id="terminalCommonFields"></div>
+            <a class="btn btn-secondary btn-block" href="https://www.youtube.com/watch?v=TC0GfTunUUA">Submit</a>
+        </form>
+    </div>
+
+    <script src="../../Js/HeaderTitle.js"></script>
+</body>
+</html>

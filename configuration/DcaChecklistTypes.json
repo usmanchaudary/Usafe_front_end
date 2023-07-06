@@ -1,0 +1,100 @@
+[
+    {
+        "sectionFor": "Deep Compliance Audit",
+        "sectionHeading": [
+            {
+                "heading": "Portable Electrical Appliance Checklist",
+                "href": "/Pages/Checklist/genericChecklist.html"
+            },
+            {
+                "heading": "Hot Work checklist",
+                "href": "/Pages/Checklist/genericChecklist.html"
+            },
+            {
+                "heading": "DCA PTW Checklist",
+                "href": "/Pages/Checklist/genericChecklist.html"
+            },
+            {
+                "heading": "Check List - Vehicles for Business",
+                "href": "/Pages/Checklist/genericChecklist.html"
+            },
+            {
+                "heading": "Checklist - Fire Warden",
+                "href": "/Pages/Checklist/genericChecklist.html"
+            },
+            {
+                "heading": "ERP",
+                "href": "/Pages/Checklist/genericChecklist.html"
+            },
+            {
+                "heading": "Checklist - Manual Handling",
+                "href": "/Pages/Checklist/genericChecklist.html"
+            },
+            {
+                "heading": "Checklist - Unloading of a road tanker",
+                "href": "/Pages/Checklist/genericChecklist.html"
+            },
+            {
+                "heading": "Lifting Equipment",
+                "href": "/Pages/Checklist/genericChecklist.html"
+            },
+            {
+                "heading": "DCA Ladders Checklist-Revised 2013",
+                "href": "/Pages/Checklist/genericChecklist.html"
+            },
+            {
+                "heading": "DCA Portable Electrical Appliances Checklist",
+                "href": "/Pages/Checklist/genericChecklist.html"
+            },
+            {
+                "heading": "DCO LOTO",
+                "href": "/Pages/Checklist/genericChecklist.html"
+            },
+            {
+                "heading": "DCA Hot Work Checklist",
+                "href": "/Pages/Checklist/genericChecklist.html"
+            },
+            {
+                "heading": "DCA Office Ergonomics and Safety - How to Sit correctly",
+                "href": "/Pages/Checklist/genericChecklist.html"
+            },
+            {
+                "heading": "DCA PPE Checklist",
+                "href": "/Pages/Checklist/genericChecklist.html"
+            },
+            {
+                "heading": "DCA Forklift Truck Checklist",
+                "href": "/Pages/Checklist/genericChecklist.html"
+            },
+            {
+                "heading": "Checklist - Scaffold",
+                "href": "/Pages/Checklist/genericChecklist.html"
+            },
+            {
+                "heading": "Checklist - Hot Work PTW",
+                "href": "/Pages/Checklist/genericChecklist.html"
+            },
+            {
+                "heading": "Checklist - Fork Lift Truck",
+                "href": "/Pages/Checklist/genericChecklist.html"
+            }
+        ]
+    },
+    {
+        "sectionFor": "Planned Inspection",
+        "sectionHeading": [
+            {
+                "heading": "Planned Inspection Checklist 1",
+                "href": "/Pages/Checklist/genericChecklist.html"
+            },
+            {
+                "heading": "Planned Inspection Checklist 2",
+                "href": "/Pages/Checklist/genericChecklist.html"
+            },
+            {
+                "heading" :"Planned Forklift Truck Checklist",
+                "href": "/Pages/Checklist/genericChecklist.html"
+            }
+        ]
+    }
+]

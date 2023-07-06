@@ -1,0 +1,42 @@
+[
+    {
+        "parent": "Department",
+        "options": [
+            {
+                "val": "Production",
+                "text": "Production",
+                "parent": "Production"
+            },
+            {
+                "val": "Engineering",
+                "text": "Engineering",
+                "parent": "Engineering"
+            },
+            {
+                "val": "Quality",
+                "text": "Quality",
+                "parent": "Quality"
+            },
+            {
+                "val": "Safety",
+                "text": "Safety",
+                "parent": "Safety"
+            },
+            {
+                "val": "PM & Blending",
+                "text": "PM & Blending",
+                "parent": "PM & Blending"
+            },
+            {
+                "val": "Central Engineering",
+                "text": "Central Engineering",
+                "parent": "Central Engineering"
+            },
+            {
+                "val": "ce2",
+                "text": "ce2",
+                "parent": "Central Engineering"
+            }
+        ]
+    }
+]

@@ -1,0 +1,23 @@
+[
+    {
+        "name": "Upload Photos",
+        "elementTag": "input",
+        "type": "file",
+        "multiple": "multiple"
+    },
+    {
+        "name": "Reponsibility",
+        "elementTag": "select",
+        "type": "",
+        "options": [
+            {
+                "val": "1",
+                "text": "Area Prod Manager"
+            },
+            {
+                "val": "2",
+                "text": "Warehouse Manager"
+            }
+        ]
+    }
+]

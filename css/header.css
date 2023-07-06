@@ -21,3 +21,14 @@
 .navbar-back-text {
     margin-right: 5px;
 }
+
+.btn-highlight {
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border-radius: 50%;
+  }
+  
+  .btn-highlight:hover {
+    background-color: yellow;
+    color: black;
+  }
+  

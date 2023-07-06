@@ -1,0 +1,130 @@
+[
+    {
+        "sectionFor" : "Deep Compliance Audit",
+        "sections": [
+            {
+                "sectionName": "Portable Electrical Appliance Checklist",
+                "questions": [
+                    {
+                        "heading":"certification",
+                        "question": "Is a hot work permit required?"
+                    },
+                    {
+                        "heading":"voltage",
+                        "question": "Is a hot work permit required?"
+                    },
+                    {
+                        "heading":"Dc current",
+                        "question": "Is a hot work permit required?"
+                    }
+                ]
+            },
+            {
+                "sectionName": "Hot Work checklist",
+                "questions": [
+                    {
+                        "heading":"Hot certification",
+                        "question": "Is a hot work permit required?"
+                    },
+                    {
+                        "heading":"Hot voltage",
+                        "question": "Is a hot work permit required?"
+                    },
+                    {
+                        "heading":"Hot Dc current",
+                        "question": "Is a hot work permit required?"
+                    },
+                    {
+                        "heading":"Hot Ac current",
+                        "question": "Is a hot work permit required?"
+                    }
+                ]
+            },{
+                "sectionName": "DCA PTW Checklist",
+                "questions": [
+                    {
+                        "heading":"PTW certification",
+                        "question": "Is a hot work permit required?"
+                    },
+                    {
+                        "heading":"PTW voltage",
+                        "question": "Is a hot work permit required?"
+                    },
+                    {
+                        "heading":"PTW Dc current",
+                        "question": "Is a hot work permit required?"
+                    },
+                    {
+                        "heading":"PTW Ac current",
+                        "question": "Is a hot work permit required?"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "sectionFor": "Planned Inspection",
+        "sections": [
+            {
+                "sectionName": "Planned Inspection Checklist 1",
+                "questions": [
+                    {
+                        "heading":"ch1 planned certification",
+                        "question": "Is a hot work permit required?"
+                    },
+                    {
+                        "heading":"planned voltage",
+                        "question": "Is a hot work permit required?"
+                    },
+                    {
+                        "heading":"planned Dc current",
+                        "question": "Is a hot work permit required?"
+                    }
+                ]
+            },
+            {
+                "sectionName": "Planned Inspection Checklist 2",
+                "questions": [
+                    {
+                        "heading":"planned Hot certification",
+                        "question": "Is a hot work permit required?"
+                    },
+                    {
+                        "heading":"planned Hot voltage",
+                        "question": "Is a hot work permit required?"
+                    },
+                    {
+                        "heading":"planned Hot Dc current",
+                        "question": "Is a hot work permit required?"
+                    },
+                    {
+                        "heading":"planned Hot Ac current",
+                        "question": "Is a hot work permit required?"
+                    }
+                ]
+            },
+            {
+                "sectionName": "Planned Forklift Truck Checklist",
+                "questions": [
+                    {
+                        "heading":"planned Hot certification Forklift",
+                        "question": "Is a hot work permit required?"
+                    },
+                    {
+                        "heading":"planned Hot voltage",
+                        "question": "Is a hot work permit required?"
+                    },
+                    {
+                        "heading":"planned Hot Dc current",
+                        "question": "Is a hot work permit required?"
+                    },
+                    {
+                        "heading":"planned Hot Ac current",
+                        "question": "Is a hot work permit required?"
+                    }
+                ]
+            }
+
+        ]
+    }
+]

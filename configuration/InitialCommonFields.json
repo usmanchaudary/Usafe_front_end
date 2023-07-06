@@ -1,0 +1,56 @@
+[
+    
+    {
+        "name": "Department",
+        "elementTag": "select",
+        "type": "cascaded",
+        "child": "Area",
+        "options":[
+            {
+                "val":"Production",
+                "text":"Production"
+            },
+            {
+                "val":"Engineering",
+                "text":"Engineering"
+            },
+            {
+                "val":"Quality",
+                "text":"Quality"
+            },
+            {
+                "val":"Safety",
+                "text":"Safety"
+            },
+            {
+                "val":"PM & Blending",
+                "text":"PM & Blending"
+            },
+            {
+                "val":"Central Engineering",
+                "text":"Central Engineering"
+            },
+            {
+                "val":"Admin",
+                "text":"Admin"
+            }
+        ]
+    },
+    {
+        "name": "Area",
+        "elementTag": "select",
+        "type": "",
+        "Parent": "Department",
+        "options":[]
+    },
+    {
+        "name": "Description",
+        "elementTag": "textarea",
+        "type": "text"
+    },
+    {
+        "name": "Date",
+        "elementTag": "input",
+        "type": "datetime-local"
+    }
+]

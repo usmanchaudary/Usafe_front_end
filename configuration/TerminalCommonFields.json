@@ -9,15 +9,9 @@
         "name": "Reponsibility",
         "elementTag": "select",
         "type": "",
+        "Parent": "Area",
         "options": [
-            {
-                "val": "1",
-                "text": "Area Prod Manager"
-            },
-            {
-                "val": "2",
-                "text": "Warehouse Manager"
-            }
+            
         ]
     }
 ]

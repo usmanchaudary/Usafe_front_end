@@ -38,5 +38,20 @@
                 "parent": "Central Engineering"
             }
         ]
+    },
+    {
+        "parent": "Area",
+        "options": [
+            {
+                "val": "Abdul Manan Khan",
+                "text": "Abdul Manan Khan",
+                "parent": "Central Engineering"
+            },
+            {
+                "val": "Prod manager",
+                "text": "Prod manager",
+                "parent": "Production"
+            }
+        ]
     }
 ]

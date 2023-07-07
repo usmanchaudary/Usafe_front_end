@@ -39,7 +39,8 @@
     {
         "name": "Area",
         "elementTag": "select",
-        "type": "",
+        "type": "cascaded",
+        "child":"Reponsibility",
         "Parent": "Department",
         "options":[]
     },

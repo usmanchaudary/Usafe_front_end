@@ -21,7 +21,7 @@ const populateNextSelect = (element) => {
 
         let options = parentData.options.filter(x => x.parent === selectedValue);
         elementToPopulate.empty();
-        elementToPopulate.append(`<option selected disabled hidden>Select Area</option>`);
+        elementToPopulate.append(`<option selected disabled hidden>Select . . .</option>`);
         options.forEach(option => {
             elementToPopulate.append(`<option value="${option.val}">${option.text}</option>`);
         });

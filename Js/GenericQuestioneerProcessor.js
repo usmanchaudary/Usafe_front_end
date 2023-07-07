@@ -1,9 +1,11 @@
+var _currentCheckList = "";
 const GenericQuestioneerProcessor = (sectionName) => {
   $.get("../../configuration/CheckListQuestions.json", (data) => {
     let sectionFor = getValue("sectionFor");
-    console.log(sectionFor);
+    
     let sections = data.find((x) => x.sectionFor == sectionFor)?.sections;
     let section = sections.find((x) => x.sectionName == sectionName);
+    _currentCheckList = section.sectionName; // this will be used at the time of submission
     let questions = section.questions;
     //need to create a form wizard which will be used to display the questions one by one with next and previous buttons
     //the form wizard will be created using the questions array
@@ -15,6 +17,7 @@ const GenericQuestioneerProcessor = (sectionName) => {
 
 let currentIndex = 0; // Current question index
 let _questions = []; // Array of questions
+let resultSet = [];
 const createChecklistFormWizard = (questions) => {
     
   let wizardHtml = "";
@@ -89,7 +92,7 @@ const createChecklistFormWizard = (questions) => {
         `)
         .join('')}
     </div>
-    <button class="btn btn-dark btn-block mt-lg-3" style="background-color: black; color: white;">Submit</button>
+    <button class="btn btn-dark btn-block mt-lg-3" style="background-color: black; color: white;" onclick="submitResultSet()">Submit</button>
   </div>
 `;
   return {wizardHtml, resultHtml};
@@ -131,7 +134,7 @@ const showForm = (index) => {
       showForm(currentIndex);
     }
   };
-
+  
   const displayResults = () => {
 
     for (let i = 0; i < _questions.length; i++) {
@@ -151,5 +154,21 @@ const showForm = (index) => {
         statusValue.textContent = status.value;
         actionsValue.textContent = actions.value;
         responsibilityValue.textContent = responsibility.value;
+
+        //fill the data in resultSet
+        resultSet.push({
+            questionId: questionId,
+            compliance: selectedCompliance ? selectedCompliance.value : '',
+            status: status.value,
+            actions: actions.value,
+            responsibility: responsibility.value
+        });
     }
   };
+
+  const submitResultSet = () => {
+    let parent = getValue('sectionFor');
+    //add checkList Name in resultSet
+    resultSet = {parentCheckList: parent, checkListName: _currentCheckList, checkListData : resultSet};
+    sendRequest(`api/checklist`, 'POST', JSON.stringify(resultSet));
+  }

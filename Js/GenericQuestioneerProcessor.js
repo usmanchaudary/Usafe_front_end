@@ -1,4 +1,5 @@
 var _currentCheckList = "";
+
 const GenericQuestioneerProcessor = (sectionName) => {
   $.get("../../configuration/CheckListQuestions.json", (data) => {
     let sectionFor = getValue("sectionFor");
@@ -27,9 +28,9 @@ const createChecklistFormWizard = (questions) => {
     const activeClass = i === 0 ? 'active-form' : '';
     const questionId = i + 1; // Generate unique question ID
     wizardHtml += `<div class="container wizard-form ${activeClass}">
-        <h4 class="text-center" style="font-weight: bold;">${question.heading}</h4>
+        <h4 class="text-center" id="heading${questionId}" style="font-weight: bold;">${question.heading}</h4>
         <div class="form-group">
-            <p>${question.question}</p>
+            <p id="question${questionId}">${question.question}</p>
         </div>
 
         <div class="form-group">
@@ -144,7 +145,9 @@ const showForm = (index) => {
         const status = document.getElementById(`status${questionId}`);
         const actions = document.getElementById(`actions${questionId}`);
         const responsibility = document.getElementById(`responsibility${questionId}`);
-    
+        const question = document.getElementById(`question${questionId}`);
+        const heading  = document.getElementById(`heading${questionId}`);
+
         const complianceValue = document.getElementById(`question${questionId}ComplianceValue`);
         const statusValue = document.getElementById(`question${questionId}StatusValue`);
         const actionsValue = document.getElementById(`question${questionId}ActionsValue`);
@@ -161,7 +164,9 @@ const showForm = (index) => {
             compliance: selectedCompliance ? selectedCompliance.value : '',
             status: status.value,
             actions: actions.value,
-            responsibility: responsibility.value
+            responsibility: responsibility.value,
+            question: question.innerText,
+            heading: heading.innerText
         });
     }
   };
@@ -169,6 +174,9 @@ const showForm = (index) => {
   const submitResultSet = () => {
     let parent = getValue('sectionFor');
     //add checkList Name in resultSet
-    resultSet = {parentCheckList: parent, checkListName: _currentCheckList, checkListData : resultSet};
-    sendRequest(`api/checklist`, 'POST', JSON.stringify(resultSet));
+    let reportedBy = localStorage.getItem("reportedBy");
+    
+    resultSet = {parentCheckList: parent, checkListName: _currentCheckList, reportedBy, checkListData : resultSet};
+    console.log(resultSet);
+    sendRequest(`api/checklist/saveCheckList`, 'POST', JSON.stringify(resultSet));
   }

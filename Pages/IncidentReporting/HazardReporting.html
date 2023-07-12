@@ -13,19 +13,24 @@
     <script src="../../Js/Common/Initials.js"></script>
     <script src="../../Js/Common/Teminal.js"></script>
     <script src="../../Templates/TerminalCommon.js"></script>
+    <script src="../../Global/URLS.js"></script>
+
+    <script src="../../Helpers/HttpHandler.js"></script>
 </head>
 <body>
     <div id="header"></div>
     <div class="container">
-        <form id="safeUnsafeAct">
+        <form id="hazardReporting">
            
             <div id="initialCommonFields"></div>
             
             <div id="terminalCommonFields"></div>
-            <button class="btn btn-secondary btn-block">Submit</button>
+            <button class="btn btn-secondary btn-block" type="button" onclick="getFormValues('hazardReporting','api/changeform/savechangeformdata')">Submit</button>
         </form>
     </div>
 
     <script src="../../Js/HeaderTitle.js"></script>
+    <script src="../../Helpers/FormDataHandler.js"></script>
+
 </body>
 </html>

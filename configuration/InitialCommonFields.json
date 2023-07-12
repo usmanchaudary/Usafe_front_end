@@ -5,7 +5,7 @@
         "elementTag": "select",
         "type": "cascaded",
         "child": "Area",
-        "options":[
+        "options": [
             {
                 "val":"Production",
                 "text":"Production"

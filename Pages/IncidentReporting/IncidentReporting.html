@@ -13,11 +13,14 @@
     <script src="../../Js/Common/Initials.js"></script>
     <script src="../../Js/Common/Teminal.js"></script>
     <script src="../../Templates/TerminalCommon.js"></script>
+    <script src="../../Global/URLS.js"></script>
+
+    <script src="../../Helpers/HttpHandler.js"></script>
 </head>
 <body>
     <div id="header"></div>
     <div class="container">
-        <form id="safeUnsafeAct">
+        <form id="incidentReporting">
            
             <div id="initialCommonFields"></div>
             <div class="form-group">
@@ -38,9 +41,10 @@
                     <option>Property Damage</option>
                 </select>
             </div> 
+
             <div class="form-group">
                 <label for="actType">Event Sub Type</label>
-                <select class="form-control" id="EventType" rows="3">
+                <select class="form-control" id="EventSubType" rows="3">
                     <option selected disabled hidden>Event Sub Type</option>
                     <option>Potential Injuries</option>
                     <option>Potential Environment</option>
@@ -50,7 +54,7 @@
             
             <div class="form-group">
                 <label for="actType">Reason</label>
-                <select class="form-control" id="EventType" rows="3">
+                <select class="form-control" id="Reason" rows="3">
                     <option selected disabled hidden>Reason</option>
                     <option>Safe Travel</option>
                     <option>Manual Trolly</option>
@@ -74,10 +78,12 @@
             </div>
 
             <div id="terminalCommonFields"></div>
-            <a class="btn btn-secondary btn-block" href="https://www.youtube.com/watch?v=TC0GfTunUUA">Submit</a>
+            <button class="btn btn-secondary btn-block" type="button" onclick="getFormValues('incidentReporting','api/changeform/savechangeformdata')">Submit</button>
         </form>
     </div>
 
     <script src="../../Js/HeaderTitle.js"></script>
+    <script src="../../Helpers/FormDataHandler.js"></script>
+
 </body>
 </html>

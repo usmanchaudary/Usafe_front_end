@@ -7,7 +7,10 @@
                 "questions": [
                     {
                         "heading":"certification",
-                        "question": "Is a hot work permit required?"
+                        "question": "Is a hot work permit required?",
+                        "Reponsibility": [
+                            
+                        ]
                     },
                     {
                         "heading":"voltage",
@@ -18,6 +21,7 @@
                         "question": "Is a hot work permit required?"
                     }
                 ]
+
             },
             {
                 "sectionName": "Hot Work checklist",

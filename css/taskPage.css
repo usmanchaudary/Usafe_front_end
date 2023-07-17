@@ -1,0 +1,26 @@
+body{
+    padding: 0%;
+    margin: 0%;
+}
+.TaskHeader{
+    background-color: #fdca31;;
+    padding: 20px;
+    font-weight: bold;
+    font-size: 25px;
+    position: fixed;
+    width: 100%;
+    top:0;
+}
+.TaskContent{
+    width: 96%;
+    margin: 8px 0px 0px 0px;
+}
+.TaskContentContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 125px;
+}

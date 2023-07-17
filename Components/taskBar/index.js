@@ -6,19 +6,19 @@ const taskBar = () => {
 
           <div class='taskIcons'>
             <i class="fa fa-calendar faIcon" aria-hidden="true"></i>
-            <p>My Reporting</p>
+            <a href='/Pages/reporting/reporting.html'>My Reporting</a>
           
           </div>
 
           <div class='taskIcons'>
           <i class="fa fa-calendar-check-o faIcon" aria-hidden="true"></i>
-            <p>My Tasks</p>
+            <a href='/Pages/taskPage/taskPage.html'>My Tasks</a>
           
           </div>
 
           <div class='taskIcons'>
-            <i class="fa fa-user faIcon" aria-hidden="true"></i>
-            <p>My Profile</p>
+            <i class="fa fa-user faIcon" onclick="activateClass(this)" aria-hidden="true"></i>
+            <a href='/Pages/myProfile/myProfile.html'>My Profile</a>
           
           </div>
         </div>
@@ -30,5 +30,9 @@ const taskBar = () => {
   const taskBarCaller=()=>{
       $(".taskBar").html(taskBar())
   }
-  
+
   taskBarCaller();
+
+  function activateClass(obj){
+    $(obj).addClass('active');
+  }

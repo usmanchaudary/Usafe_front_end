@@ -16,8 +16,8 @@
     crossorigin="anonymous"></script>
   <script src="https://kit.fontawesome.com/b576bd8d3c.js" crossorigin="anonymous"></script>
 
-  <link rel="stylesheet" href="../reportDeatails/reportDetails.css">
-  <link rel="stylesheet" href="../../Components/dropDownComp/dropDown.css">
+  <link rel="stylesheet" href="../../css/reportDetails.css">
+  <link rel="stylesheet" href="../../css/dropDown.css">
   <!-- <link rel="stylesheet" href="../../Components/dateTime/dateTime.css"> -->
   <link rel="stylesheet" href="../../css/header.css">
   <script src="../../Templates/Header.js"></script>
@@ -27,14 +27,13 @@
   <div id="header"></div>
   <div class='RepDetailsContainer'>
     <div class='RepDetailsContent' id="detailsDiv">
-
     </div>
-
 
   </div>
   <script src="../../Global/URLS.js"></script>
   <script src="../../Helpers/HttpHandler.js"></script>
   <script src="../../Js/HeaderTitle.js"></script>
+
   <script>
     //get query string from url
     var url_string = window.location.href;
@@ -96,6 +95,7 @@
     </div>`;
           }
         }
+
         $("#detailsDiv").html(html);
       }
     })

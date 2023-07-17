@@ -25,11 +25,17 @@ const createSelectElements = (element) => {
                 <select class="form-control" id="${element.name}" data-childName="${element.child}" ${element.type === "cascaded" ? 'onchange="populateNextSelect(this)"' : ""}> 
                 <option selected disabled hidden>Select</option>
                 `;
-                    
-                    for (let i = 0; i < element.options.length; i++) {
-                        html += `<option val="${element.options[i].val}"> ${element.options[i].text} </option>`; 
-                    }
-
+                    if(!element.Parent){
+                        let departments = JSON.parse(localStorage.getItem("departments"));
+                        for (let i = 0; i < departments.length; i++) {
+                            html += `<option val="${departments[i].id}.options[i].id}"> ${departments[i].name} </option>`; 
+                        }
+                    }    
+                    else{
+                        for (let i = 0; i < element.options.length; i++) {
+                            html += `<option val="${element.options[i].val}"> ${element.options[i].text} </option>`; 
+                        }
+                }
                 html +=`</select>
             </div>`;
     return html;

@@ -1,6 +1,9 @@
-const tasks = () => {
-    return (
-      `<div class='TaskContainer'>
+var taskId = 0;
+var entity = null;
+const createTasks = (tasks) => {
+   let html = "";
+   tasks.forEach(task => {
+      html += `<div class='TaskContainer'>
       <div class='ReportContent'>
 
         <div class='TaskHeadings'>
@@ -11,25 +14,42 @@ const tasks = () => {
         </div>
 
         <div class='ReportDescriptions'>
-          <p>Pending</p>
-          <p>Hazard Reporting</p>
-          <p>Prod Area Manager</p>
-          <p>2018-05-25</p>
+          <p>${task.status}</p>
+          <p>${task.formName}</p>
+          <p>${task.assignedTo}</p>
+          <p>${task.createdDate}</p>
         </div>
 
       </div>
-      <div class='ReportBorder'/>
+      <div class='ReportBorder'> </div>
       <div class='TaskBtn'>
-        <button class='ReportButton'}>VIEW DETAILS</button>
-        <button class='ReportButton'}>CHANGE STATUS</button>
+        <button class='ReportButton' onclick="NavigateToDetails('${task.entity}',${task.id})" data-toggle="modal" data-target="#taskModal')">VIEW DETAILS</button>
+        <button class='ReportButton' data-toggle="modal" data-target="#taskModal" data-taskId=${task.id} onclick="setTaskId(${task.id}, '${task.entity}')">CHANGE STATUS</button>
       </div>
-
     </div>
   `
-    )
+  });
+  return html;
   }
-  const tasksCaller=()=>{
-      $(".tasks").html(tasks())
+  const tasksCaller=(tasks)=>{
+      $(".tasks").html(createTasks(tasks))
   }
-  
-  tasksCaller();
+  function setTaskId(id,et){
+    taskId = id;
+    entity = et;
+  }
+
+  function changeTaskStatus(){
+    //get status value by name
+    let status = $("input[name='status']:checked").val();
+    sendRequest(`api/ChangeForm/changeTaskStatus?id=${taskId}&entity=${entity}&taskValue=${status}`,'POST',{},(data)=>{
+      if(data){
+        alert("Status Changed Successfully");
+        window.location.reload();
+      }
+    });
+  }
+
+  const NavigateToDetails = (entity,id) => {
+    window.location.href = "/Pages/reportDeatails/reportDetails.html?entity="+entity+"&id="+id;
+  };

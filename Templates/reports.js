@@ -33,6 +33,7 @@ const fetchReports = () => {
   let username = localStorage.getItem("userName");
  
   sendRequest("api/ChangeForm/fetchReports?userName="+username, "GET",{}, (data) => {
+    reportCountCaller(data.length)
     for (const iterator of data) {
       $(".reports").append(reports(iterator.files? JSON.parse(iterator.files)[0]: "", iterator.status, iterator.formName, iterator.assignedTo, iterator.createdDate, iterator.entity ,iterator.id));
     }

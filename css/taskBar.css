@@ -9,6 +9,7 @@ body{
     position: fixed;
     width: 100%;
     bottom: 0px;
+    padding: 10px;
 }
 
 .taskIcons{
@@ -16,13 +17,21 @@ body{
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    cursor: pointer;
 }
-.taskIcons p, .faIcon{
+.taskIcons a, .faIcon{
     color: white;
     display: flex;
+    text-decoration: unset;
+}
+/* add active class for faIcon */
+.faIcon.active{
+    color: #fdca31;
 }
 .faIcon{
-    padding-top: 20px;
+    padding-top: 10px;
+    font-size: 22px;
+    padding-bottom: 8px;
 }
 .taskIconContainer {
     width: 50%;

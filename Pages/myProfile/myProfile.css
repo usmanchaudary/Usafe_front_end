@@ -1,0 +1,112 @@
+body {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .profHeader {
+    background: goldenrod;
+    padding: 10px;
+    font-weight: 500;
+    position: relative;
+    z-index: 2;
+    position: fixed;
+    width: 100%;
+  }
+  
+  .proHeader p {
+    font-weight: 500;
+  }
+  
+  .profContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+    height: 85vh;
+  }
+  
+  .profLog {
+    border: 1px solid gray;
+    border-radius: 100%;
+    padding: 15px 48px;
+    font-size: 110px;
+    background-color: white;
+  }
+  
+  .profContent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .profContent p,
+  h1 {
+    margin: 0px;
+  }
+  
+  .iconProf {
+    color: goldenrod;
+  }
+  
+  .skewSet {
+    width: 100%;
+    height: 450px;
+    transform: skewY(-20deg);
+    background-color: goldenrod;
+    position: absolute;
+    top: -215px;
+    z-index: 0;
+  }
+  
+  .profBtn,.profBtnEnd {
+    color: gray !important;
+    width: 100%;
+    text-align: start !important;
+    background: white !important;
+    border: none !important;
+    border-bottom: 1px solid !important;
+    padding: 25px !important;
+  }
+  .profBtnEnd {
+    margin-bottom: 125px;
+  }
+  
+  .profBtn:focus {
+    box-shadow: none !important;
+  }
+  .profBtnEnd:focus {
+    box-shadow: none !important;
+  }
+  
+  .fa-arrow-right {
+    float: right;
+  }
+  
+  .fa-lock,
+  .fa-phone,
+  .fa-refresh,
+  .fa-sign-out {
+    margin-right: 8px;
+  }
+
+  .modalBtn :active{
+    background-color: lightgray;
+    border: 1px solid transparent !important;
+  }
+  .modalBtn {
+    background-color: white;
+    color: goldenrod;
+    border: none !important;
+}
+
+  
+  
+  
+  @media (max-width: 400px) {
+    .profContent h1 {
+      font-size: 25px !important;
+    }
+  }

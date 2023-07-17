@@ -6,11 +6,24 @@ const Login = () => {
     if(data){
         if(data.status === 'success'){
             localStorage.setItem("userName", data.userName);
+            localStorage.setItem("siteId", data.siteId);
+            
+            //make an api call to get departments and store it in local storage
+            sendRequest('Department/GetDepartments?siteId='+data.siteId, 'GET', {}, (data) => {
+                if(data){
+                    localStorage.removeItem("departments");
+                    localStorage.setItem("departments", JSON.stringify(data));
+                    window.location.href = '/Pages/reporting/reporting.html'
+                }
+                else{
+                    console.log("Error in getting departments");
+                }
+            });
+
             //set expiry date to 1 day
             let expiryDate = new Date();
             expiryDate.setDate(expiryDate.getDate() + 1);
             localStorage.setItem("expiryDate", expiryDate);
-            window.location.href = '/Pages/reporting/reporting.html'
         }
         else{    
             alert(data.message);

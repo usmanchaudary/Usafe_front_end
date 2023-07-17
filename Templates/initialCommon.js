@@ -22,18 +22,18 @@ const createInputElements = (element) => {
 const createSelectElements = (element) => {
     let html = `<div class="form-group">
                 <label for="${element.name}">${element.name}</label>
-                <select class="form-control" id="${element.name}" data-childName="${element.child}" ${element.type === "cascaded" ? 'onchange="populateNextSelect(this)"' : ""}> 
+                <select class="form-control" id="${element.name}" data-api="${element.api}"  data-textField=${element.textField} data-valueField=${element.valueField} data-childName="${element.child}" ${element.type === "cascaded" ? `onchange="${element.populateFunction}(this)"` : ""}> 
                 <option selected disabled hidden>Select</option>
                 `;
                     if(!element.Parent){
                         let departments = JSON.parse(localStorage.getItem("departments"));
                         for (let i = 0; i < departments.length; i++) {
-                            html += `<option val="${departments[i].id}.options[i].id}"> ${departments[i].name} </option>`; 
+                            html += `<option value="${departments[i].id}"> ${departments[i].name} </option>`; 
                         }
-                    }    
+                    }   
                     else{
                         for (let i = 0; i < element.options.length; i++) {
-                            html += `<option val="${element.options[i].val}"> ${element.options[i].text} </option>`; 
+                            html += `<option value="${element.options[i].val}"> ${element.options[i].text} </option>`; 
                         }
                 }
                 html +=`</select>

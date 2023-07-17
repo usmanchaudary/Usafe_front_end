@@ -28,7 +28,7 @@ function getFormValues(formId, url) {
         values[fieldName] = getMultipleSelectValues(element);
       }else if(fieldType === "radio"){
         values[fieldName] = $(`input[name="${fieldName}"]:checked`).val();
-      } 
+      }
       else {
         values[fieldName] = element.value;
       }
@@ -69,9 +69,7 @@ function getFileValues(fileElement) {
 }
 
 function getMultipleSelectValues(selectElement) {
-  var selectedOptions = Array.from(selectElement.selectedOptions).map(function (
-    option
-  ) {
+  var selectedOptions = Array.from(selectElement.selectedOptions).map(function (option) {
     return option.value;
   });
 

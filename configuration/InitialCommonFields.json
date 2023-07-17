@@ -5,36 +5,11 @@
         "elementTag": "select",
         "type": "cascaded",
         "child": "Area",
-        "options": [
-            {
-                "val":"Production",
-                "text":"Production"
-            },
-            {
-                "val":"Engineering",
-                "text":"Engineering"
-            },
-            {
-                "val":"Quality",
-                "text":"Quality"
-            },
-            {
-                "val":"Safety",
-                "text":"Safety"
-            },
-            {
-                "val":"PM & Blending",
-                "text":"PM & Blending"
-            },
-            {
-                "val":"Central Engineering",
-                "text":"Central Engineering"
-            },
-            {
-                "val":"Admin",
-                "text":"Admin"
-            }
-        ]
+        "api": "Area/GetArea",
+        "textField": "areaName",
+        "valueField": "id",
+        "options": [],
+        "populateFunction": "populateNextSelect"
     },
     {
         "name": "Area",
@@ -42,7 +17,12 @@
         "type": "cascaded",
         "child":"Reponsibility",
         "Parent": "Department",
-        "options":[]
+        "options":[],
+        "api": "Employee/GetSiteManagerAndAreaManager",
+        "textField": "name",
+        "valueField": "id",
+        "populateFunction": "populateNextSelect",
+        "get": "Responsible"
     },
     {
         "name": "Description",

@@ -7,7 +7,6 @@ $.get('../../configuration/InitialCommonFields.json', structure => {
     });
 })
 
-
 const populateNextSelect = (element) => {
     //get the if of element
     let parentName = $(element).attr("id");
@@ -15,16 +14,26 @@ const populateNextSelect = (element) => {
     let childName = $(element).attr("data-childName");
     let elementToPopulate = $(`#${childName}`);
     let selectedValue = $(element).val();
+    let api = $(element).attr("data-api");
+    if (api){
+        let siteId = localStorage.getItem("siteId");
+        let textField = $(element).attr("data-textField");
+        let valueField = $(element).attr("data-valueField");
 
-    //get the value of the selected option
-    $.get('../../configuration/cascadedList.json', data => {
-        let parentData = data.filter(x => x.parent === parentName)[0];
+        if(parentName == "Area"){
+            api = `${api}?siteId=${siteId}&deptId=${$('#Department').val()}&areaId=${selectedValue}`;
+        }
+        else{   
+            api = `${api}?siteId=${siteId}&deptId=${selectedValue}`;
+        }
         
-        let options = parentData.options.filter(x => x.parent === selectedValue);
-        elementToPopulate.empty();
-        elementToPopulate.append(`<option selected disabled hidden>Select . . .</option>`);
-        options.forEach(option => {
-            elementToPopulate.append(`<option value="${option.val}">${option.text}</option>`);
-        });
-    })
+        //get the value of the selected option
+        sendRequest(`${api}`,'GET',null, data => {
+            elementToPopulate.empty();
+            elementToPopulate.append(`<option selected disabled hidden>Select . . .</option>`);
+            data.forEach(option => {
+                elementToPopulate.append(`<option value="${option[valueField]}" >${option[textField]}</option>`);
+            });
+        })
+    }
 }

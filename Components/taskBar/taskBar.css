@@ -1,0 +1,38 @@
+body{
+    margin: 0%;
+    padding: 0%;
+}
+.taskBarContainer {
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    width: 100%;
+    bottom: 0px;
+}
+
+.taskIcons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.taskIcons p, .faIcon{
+    color: white;
+    display: flex;
+}
+.faIcon{
+    padding-top: 20px;
+}
+.taskIconContainer {
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+}
+
+@media (max-width: 530px) {
+    .taskIconContainer {
+        width: 80%;
+    }
+    
+  }

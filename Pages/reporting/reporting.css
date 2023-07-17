@@ -1,0 +1,60 @@
+body{
+    margin: 0%;
+    padding: 0%;
+}
+.RepHeader{
+    background-color: #fdca31;;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 25px;
+    position: fixed;
+    width: 100%;
+    top:0;
+    text-align: center;
+}
+.RepContent{
+    width: 96%;
+    margin: 8px 0px 0px 0px;
+}
+.RepContentContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 100px;
+    margin-top: 210px;
+}
+.reporting{ 
+    background-color: lightgray;
+}
+.ReportCountContainerSecond{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid lightgray;
+    background-color: white;
+    position: fixed;
+    width: 100%;
+    top:128px;
+}
+.ReportCountContentSecond{
+    font-weight: bolder;
+    font-size: 20px;
+    margin: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+@media (max-width: 660px) {
+    .ReportCountContentSecond{
+        font-weight: bold;
+        font-size: 20px;
+        margin: 10px;
+        padding-left: 5px;
+        padding-right: 5px;
+
+    }
+    .ReportCountContainerSecond{
+        top:94px;
+    }
+}

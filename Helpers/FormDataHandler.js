@@ -2,9 +2,9 @@ function getFormValues(formId, url) {
   var form = document.getElementById(formId);
   var elements = form.elements;
   let formName = localStorage.getItem("sectionFor");
-  let reportedBy = localStorage.getItem("reportedBy");
+  let reportedBy = localStorage.getItem("userName");
   var values = {formName};
-  values["reportedBy"] = reportedBy;
+  values["userName"] = reportedBy;
  
   let containFiles = false;
   for (var i = 0; i < elements.length; i++) {
@@ -50,7 +50,7 @@ function getFormValues(formId, url) {
   }
   if (url && values) {
     
-    sendRequest(url, "POST", values);
+    sendRequestWithFiles(url, "POST", values);
   }
   console.log(values);
   //prevent form from submitting

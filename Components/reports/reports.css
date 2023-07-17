@@ -1,0 +1,96 @@
+body{
+    padding: 0%;
+    margin: 0%;
+}
+.ReportContainer {
+    background: white;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid lightgray;
+    border-top:1px solid lightgray;
+    height: 222px;
+}
+
+.ReportContent{
+    width: auto;
+    display: flex;
+}
+
+.ReportImage img {
+    width: auto;
+    height: 150px;
+    padding: 10px;
+}
+.ReportImage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+}
+.ReportBorder{
+    height: 2px;
+    background-color: gray;
+    width: 96%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.ReportHeadings {
+    width: 35%;
+}
+.ReportButton:active{
+    background-color: gray;
+}
+.ReportButton{
+    border: none;
+    background-color: white;
+    padding: 15px;
+    margin:5px;
+    width: 98%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+@media (max-width: 760px) {
+ 
+    .ReportImage{
+        width:35%;
+    }
+    .ReportContent{
+        width: auto;
+    }
+    .ReportHeadings{
+        width:35%;
+    }
+}
+@media (max-width: 510px) {
+ 
+    .ReportContainer{
+       font-size: 12px;
+       padding: 10px;
+   }
+   .ReportContainer p{
+    padding-top: 15px;
+   }
+   .ReportImage{
+       width:50%;
+   }
+   .ReportContent{
+    width: auto;
+   }
+   .ReportHeadings{
+       width:24%;
+   }
+}
+@media (max-width: 420px) {
+ 
+    .ReportHeadings{
+        width:20%;
+    }
+    .ReportContainer p{
+        padding-top: 10px;
+       }
+    .ReportImage {
+        width: 45%;
+    }
+}

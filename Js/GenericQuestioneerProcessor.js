@@ -122,6 +122,8 @@ const showForm = (index) => {
     }
   };
 
+//write me a function which fetch all query parameters from url string
+
   const handleSkip = (length) => {
     if (currentIndex < length - 1) {
       currentIndex++;
@@ -174,9 +176,10 @@ const showForm = (index) => {
   const submitResultSet = () => {
     let parent = getValue('sectionFor');
     //add checkList Name in resultSet
-    let reportedBy = localStorage.getItem("reportedBy");
+    let reportedBy = localStorage.getItem("userName");
     
     resultSet = {parentCheckList: parent, checkListName: _currentCheckList, reportedBy, checkListData : resultSet};
     console.log(resultSet);
     sendRequest(`api/checklist/saveCheckList`, 'POST', JSON.stringify(resultSet));
   }
+  

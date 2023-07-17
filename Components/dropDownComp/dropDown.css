@@ -1,0 +1,22 @@
+.dropContent {
+    display: flex;
+    justify-content: space-between;
+}
+.dropContent p {
+    font-size: 20px;
+    margin:0;
+    /* margin-top: 15px; */
+}
+.DropHeaders{
+    font-size: 14px;
+    margin:0;
+    color: gray;
+    margin-top: 35px;
+}
+svg.DropIcon {
+    margin-top: 35px;
+    margin-bottom: 10px;
+}
+.DropContainer{
+    background-color: lightgray;
+}

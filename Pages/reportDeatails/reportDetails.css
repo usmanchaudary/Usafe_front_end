@@ -1,0 +1,81 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: lightgray;
+}
+.RepDetailsContainer{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: lightgray;
+}
+
+.RepDetailsContent{
+    width: 96%;
+}
+.RepText{
+    height: 200px;
+    width: 100%;
+    border: 1px solid lightgray;
+}
+.TextDescription{
+    position: absolute;
+    top: -16px;
+}
+.DetailTextArea{
+    position: relative;
+    margin-top: 30px;
+}
+.DateTimeContainer{
+    display: flex;
+    justify-content: space-between;
+}
+.RepPhoto{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+.RepPhoto img{
+    margin-top: 10px;
+    height: 200px;
+    width: 200px;
+}
+
+.reportDetailContainer {
+    width: 49%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    background-color: white;
+    margin-top: 30px;
+  }
+  
+  .reportDetailContent{
+    position: absolute;
+    top: -33px;
+    left: 0px;
+}
+
+.reportDetailContainer i{
+    margin-right: 30px;
+}
+.reportDetailContainer h2{
+    margin-left: 30px;
+}
+
+.forgetNav {
+    background-color: goldenrod;
+    padding: 10px;
+    margin-bottom: 45px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  
+  .forgetNav p {
+    font-weight: bold;
+    margin-left: 20px;
+  }

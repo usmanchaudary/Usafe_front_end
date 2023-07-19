@@ -1,11 +1,9 @@
 var _currentCheckList = "";
-
+var responsiblePersons = [];
+let sectionFor = getValue("sectionFor");
 const GenericQuestioneerProcessor = (sectionName) => {
-  $.get("../../configuration/CheckListQuestions.json", (data) => {
-    let sectionFor = getValue("sectionFor");
-
-    let sections = data.find((x) => x.sectionFor == sectionFor)?.sections;
-    let section = sections.find((x) => x.sectionName == sectionName);
+  sendRequest(`api/checklist/getQuestions?checkListFormName=${sectionFor}&formName=${sectionName}`,'GET',null, (data) => {
+    let section = data.find(x=>x.sectionName == sectionName);
     _currentCheckList = section.sectionName; // this will be used at the time of submission
     let questions = section.questions;
     //need to create a form wizard which will be used to display the questions one by one with next and previous buttons
@@ -53,7 +51,7 @@ const createChecklistFormWizard = (questions) => {
         
         <div class="form-group">
           <label>Responsibility</label>
-          <select id="responsibility${questionId}" class="form-control">
+          <select id="responsibility${questionId}" class="form-control responsiblity">
           <!-- write responsible person option here -->
           </select>
         </div>
@@ -202,7 +200,7 @@ const createInitialElements = () => {
   wizardHtml += `</select>
     </div>`;
   wizardHtml += `<div class="form-group">
-    <select id="area" class="form-control">
+    <select id="area" class="form-control" onchange="getResponsiblePersons()">
     <option value="0" >Select Area</option>
     </select>
     </div>
@@ -229,4 +227,23 @@ const getAreas = (element) => {
       document.getElementById("area").innerHTML = areaHtml;
     }
   );
+};
+
+const getResponsiblePersons = (obj) => {
+  let siteId = getValue("siteId");
+  let departmentId = $("#department option:selected").val();
+  let areaId = $("#area option:selected").val();
+  sendRequest(`Employee/GetAllEmployeeOfSite?siteId=${siteId}&deptId=${departmentId}&areaId=${areaId}`, "GET", null, (response) => {
+    let employees = response;
+    let responsibilityElements = document.querySelectorAll('.responsiblity');
+
+    responsibilityElements.forEach((element) => {
+      let employeeHtml = "<option selected disabled hidden> Select Responsible Person </option>";
+      employees.forEach((employee) => {
+        employeeHtml += `<option value="${employee.id}">${employee.name}</option>`;
+      });
+      element.innerHTML = employeeHtml;
+    });
+
+  });
 };

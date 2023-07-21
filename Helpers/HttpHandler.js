@@ -4,15 +4,23 @@ const sendRequest = (url, method, body, successCallback) => {
     method: method || "GET",
     data: body || {},
     contentType: "application/json",
-    // processData: false,
-    // contentType: false,
+    //add headers
+    headers: {
+      token: localStorage.getItem("token"),
+      email : localStorage.getItem("userName")
+    },
     success: successCallback
       ? successCallback
       : (data) => {
           alert("successfully submitted the data");
          // window.location.reload();
         },
-    error: (err) => {
+    error: (xhr, ajaxOptions, thrownError) => {
+      if(xhr.status === 401){
+        alert("Your session has expired. Please login again");
+        localStorage.clear();
+        window.location.href = "/Pages/Authentication/loginPage/loginPage.html";
+      }
       alert("some error occured");
     },
   });
@@ -26,13 +34,22 @@ const sendRequestWithFiles = (url, method, body, successCallback) => {
     contentType: "application/json",
     processData: false,
     contentType: false,
+    headers: {
+      token: localStorage.getItem("token"),
+      email : localStorage.getItem("userName")
+    },
     success: successCallback
       ? successCallback
       : (data) => {
           alert("successfully submitted the data");
           window.location.reload();
         },
-    error: (err) => {
+    error: (xhr, ajaxOptions, thrownError) => {
+      if(xhr.status === 401){
+        alert("Your session has expired. Please login again");
+        localStorage.clear();
+        window.location.href = "/Pages/Authentication/loginPage/loginPage.html";
+      }
       alert("some error occured");
     },
   });

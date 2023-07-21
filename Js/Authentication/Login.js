@@ -7,7 +7,10 @@ const Login = () => {
         if(data.status === 'success'){
             localStorage.setItem("userName", data.userName);
             localStorage.setItem("siteId", data.siteId);
-            
+            //set token
+            localStorage.setItem("token", data.token);
+            localStorage.setItem("userRole", data.userRole);
+            localStorage.setItem("fullName", data.fullName);
             //make an api call to get departments and store it in local storage
             sendRequest('Department/GetDepartments?siteId='+data.siteId, 'GET', {}, (data) => {
                 if(data){

@@ -47,6 +47,7 @@
     sendRequest(`api/ChangeForm/fetchTaskDetails?id=${id}&entity=${entity}`, 'GET', {}, data => {
       console.log(data);
       let html = "";
+      //if change form data is present then create html for it
       if (data.values) {
         let values = JSON.parse(data.values);
         //iterate over values and create html from it. object key as a label and object value as a value of input element
@@ -73,7 +74,7 @@
             else if (key == "Description") {
               html += `<div class='DetailTextArea'>
       <label class='TextDescription'>${key}</label>
-      <textarea class='RepText'>${element}</textarea>
+      <textarea class='RepText' >${element}</textarea>
     </div>`;
             }
             else {
@@ -101,8 +102,9 @@
         }
 
       }
+      //if checklist data is present then create html for it
       else if(data.checkListData){
-        let questions = JSON.parse(data.checkListData);
+        let questions = data.checkListData;
         html = createResultHtml(questions);
         html+= `</div>`;
       }

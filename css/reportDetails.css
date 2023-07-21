@@ -1,7 +1,7 @@
 body{
     margin: 0;
     padding: 0;
-    background-color: lightgray;
+ 
 }
 .RepDetailsContainer{
     width: 100%;
@@ -9,7 +9,7 @@ body{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-color: lightgray;
+ 
 }
 
 .RepDetailsContent{
@@ -18,7 +18,7 @@ body{
 .RepText{
     height: 200px;
     width: 100%;
-    border: 1px solid lightgray;
+    border: 1px solid white;
 }
 .TextDescription{
     position: absolute;

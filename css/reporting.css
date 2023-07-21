@@ -26,12 +26,12 @@ body{
     margin-top: 210px;
 }
 .reporting{ 
-    background-color: lightgray;
+
 }
 .ReportCountContainerSecond{
     display: flex;
     justify-content: space-between;
-    border-bottom: 2px solid lightgray;
+    border-bottom: 2px solid white;
     background-color: white;
     position: fixed;
     width: 100%;

@@ -14,8 +14,8 @@ body{
     background: white;
     display: flex;
     flex-direction: column;
-    border: 2px solid lightgray;
-    border-top:1px solid lightgray;
+    border: 2px solid lightgrey;
+    border-top:1px solid lightgrey;
     height: 222px;
     margin-top: 10px;
 }

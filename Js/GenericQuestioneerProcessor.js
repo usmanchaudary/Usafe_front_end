@@ -56,7 +56,7 @@ const createChecklistFormWizard = (questions) => {
           </select>
         </div>
 
-        <button class="btn btn-secondary  float-right ml-lg-5" style="width: 20%;" onclick="handleNext(${questions.length})"> Next </button>
+        <button class="btn btn-secondary  float-right ml-lg-5" style="width: 20%; "  onclick="handleNext(${questions.length})"> Next </button>
         <button  class="btn btn-warning float-right" style="width: 20%;" onclick="handleSkip(${questions.length})"> Skip </button>
         <button class="btn btn-warning float-left" style="width: 20%;" onclick="handleBack()"> Back </button>
 
@@ -204,7 +204,7 @@ const createInitialElements = () => {
     <option value="0" >Select Area</option>
     </select>
     </div>
-    <button class="btn btn-primary btn-block mt-lg-3" style="background-color: black; color: white;" onclick="handleNext(1)">Next"></button>
+    <button class="btn btn-primary btn-block mt-lg-3" style="background-color: black; color: white;" onclick="handleNext(1)">Next</button>
     </div>
       
       `;

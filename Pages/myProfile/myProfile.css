@@ -93,7 +93,7 @@ body {
   }
 
   .modalBtn :active{
-    background-color: lightgray;
+
     border: 1px solid transparent !important;
   }
   .modalBtn {

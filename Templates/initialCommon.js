@@ -1,3 +1,4 @@
+const selectedLanguage = localStorage.getItem('previousLanguage');
 const createInitialCommonTemplate = (element) => {
     var html = "";
     switch (element.elementTag) {
@@ -12,28 +13,36 @@ const createInitialCommonTemplate = (element) => {
     return html;
 }
 
+
+
+
+
 const createInputElements = (element) => {
+    const name = selectedLanguage === 'ur' && element.urdu ? element.urdu : element.name;
     return `<div class="form-group">
-                <label for="${element.name}">${element.name}</label>
-                <${element.elementTag} type="${element.type}" ${element.multiple} class="form-control" id="${element.name}" placeholder="${element.name}" col="10" row="20" ></${element.elementTag}>
-            </div>`;
+    <label for="${element.name}">${name}</label>
+    <${element.elementTag} type="${element.type}" ${element.multiple} class="form-control" id="${element.name}" placeholder="${element.name}" col="10" row="20" ></${element.elementTag}>
+    </div>`;
 }
 
 const createSelectElements = (element) => {
+    const name = selectedLanguage === 'ur' && element.urdu ? element.urdu : element.name;
     let html = `<div class="form-group">
-                <label for="${element.name}">${element.name}</label>
-                <select class="form-control" id="${element.name}" data-api="${element.api}"  data-textField=${element.textField} data-valueField=${element.valueField} data-childName="${element.child}" ${element.type === "cascaded" ? `onchange="${element.populateFunction}(this)"` : ""}> 
+                <label for="${element.name}">${name}</label>
+                <select class="form-control" id="${element.name}" data-api="${element.api}"  data-textField=${element.textField} data-valueField=${element.valueField} data-childName="${element.child}" ${element.type === "cascaded" ? `onchange="${element.populateFunction}(this)"` : ""}>
                 <option selected disabled hidden>Select</option>
                 `;
                     if(!element.Parent){
                         let departments = JSON.parse(localStorage.getItem("departments"));
                         for (let i = 0; i < departments.length; i++) {
-                            html += `<option value="${departments[i].id}"> ${departments[i].name} </option>`; 
+                            // const depName = selectedLanguage === 'ur' && departments.urdu ? departments.urdu : departments.name;
+                            html += `<option value="${departments[i].id}"> ${departments[i].name} </option>`;
                         }
-                    }   
+                    }
                     else{
                         for (let i = 0; i < element.options.length; i++) {
-                            html += `<option value="${element.options[i].val}"> ${element.options[i].text} </option>`; 
+                            // const text = selectedLanguage === 'ur' && element.options[i].urText ? element.options[i].urText : element.options[i].text;
+                            html += `<option value="${element.options[i].val}"> ${element.options[i].text} </option>`;
                         }
                 }
                 html +=`</select>

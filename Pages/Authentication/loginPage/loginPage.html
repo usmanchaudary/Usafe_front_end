@@ -17,14 +17,19 @@
     <form class="formLogin">
         <div class="logo">
             <img src="../../../assets/usafeLogo.png" alt="logo" />
+            <select id="languageSelect" onchange="changePlaceholder()">
+                <option value="en">English</option>
+                <option value="ur">Urdu</option>
+              </select>
         </div>
 
         <div class="input-container">
             <!-- <BsFillPersonFill class="loginIcon" /> -->
             <i class="fa fa-user loginIcon" aria-hidden="true"></i>
-            <input placeholder="Email" id="username" class="input-field" type="text" />
+            <input placeholder="Email" id="username" class="input-field" type="text"/>
             <label for="input-field" class="input-label">
-                Email
+                <span class="english-text">Email</span>
+                <span class="urdu-text" lang="ur">ای میل</span>
             </label>
             <span class="input-highlight"></span>
         </div>
@@ -33,20 +38,26 @@
             <!-- <AiOutlineLock class="loginIcon" /> -->
             <i class="fa fa-lock loginIcon" aria-hidden="true"></i>
             <i class="fa fa-eye passCheck" aria-hidden="true"></i>
-            <input placeholder="Password" id="password" class="input-field" type="password" />
+            <input placeholder="Password" id="password" class="input-field" type="password"/>
             <label for="input-field" class="input-label">
-                Password
+                <span class="english-text">Password</span>
+                <span class="urdu-text" lang="ur">پاس ورڈ</span>
             </label>
-            <span class="input-highlight"></span>
         </div>
 
         <a class="loginLink">
-            Forget Password?
+            <span class="english-text">Forget Password?</span>
+            <span class="urdu-text" lang="ur">پاسورڈ بھول گے؟</span>
         </a>
 
-        <button type="button" onclick="Login()" class="btnLogin" >login</button>
-    </form> 
+        <!-- <button type="button" onclick="Login()" class="btnLogin" >login</button> -->
+        <button type="button" onclick="Login()" class="btnLogin">
+            <span class="english-text">Login</span>
+            <span class="urdu-text" lang="ur">لاگ ان</span>
+        </button>
+    </form>
 
     <script src="../../../Js/Authentication/Login.js"></script>
+    <script src="../../../Js/LanguageSelection.js"></script>
 </body>
 </html>

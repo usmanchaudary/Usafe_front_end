@@ -3,7 +3,9 @@
         "name": "Upload Photos",
         "elementTag": "input",
         "type": "file",
-        "multiple": "multiple"
+        "multiple": "multiple",
+
+        "urdu" : "تصاویر اپ لوڈ کریں"
     },
     {
         "name": "Reponsibility",
@@ -11,6 +13,8 @@
         "type": "",
         "Parent": "Area",
         "options": [
-        ]
+        ],
+
+        "urdu" :"ذمہ داری"
     }
 ]

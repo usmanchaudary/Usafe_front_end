@@ -1,5 +1,5 @@
 [
-    
+
     {
         "name": "Department",
         "elementTag": "select",
@@ -9,7 +9,9 @@
         "textField": "areaName",
         "valueField": "id",
         "options": [],
-        "populateFunction": "populateNextSelect"
+        "populateFunction": "populateNextSelect",
+
+        "urdu": "محکمہ"
     },
     {
         "name": "Area",
@@ -22,16 +24,23 @@
         "textField": "name",
         "valueField": "id",
         "populateFunction": "populateNextSelect",
-        "get": "Responsible"
+        "get": "Responsible",
+
+        "urdu": "رقبہ"
+
     },
     {
         "name": "Description",
         "elementTag": "textarea",
-        "type": "text"
+        "type": "text",
+
+        "urdu" : "تفصیل"
     },
     {
         "name": "Date",
         "elementTag": "input",
-        "type": "datetime-local"
+        "type": "datetime-local",
+
+        "urdu": "تاریخ"
     }
 ]

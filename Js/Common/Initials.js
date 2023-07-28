@@ -23,10 +23,10 @@ const populateNextSelect = (element) => {
         if(parentName == "Area"){
             api = `${api}?siteId=${siteId}&deptId=${$('#Department').val()}&areaId=${selectedValue}`;
         }
-        else{   
+        else{
             api = `${api}?siteId=${siteId}&deptId=${selectedValue}`;
         }
-        
+
         //get the value of the selected option
         sendRequest(`${api}`,'GET',null, data => {
             elementToPopulate.empty();

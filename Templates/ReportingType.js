@@ -1,14 +1,16 @@
-const createReportingTypeTemplate = (heading, href) => { 
+const createReportingTypeTemplate = (heading, href, urdu) => {
+    const selectedLanguage = localStorage.getItem('previousLanguage');
+    const title = selectedLanguage === 'ur' ? urdu : heading;
     var url_string = window.location.href;
     var url = new URL(url_string);
-    
+
     url = url.pathname.includes('reportingType.html')? `onclick="setValue('sectionFor', '${heading}')"`: "";
 
     return `<div class="card shadow container" style="margin-bottom: 22px;">
     <div class="card-body">
         <div class="row">
             <div class="col-mg-10">
-                <h3 class="card-title">${heading}</h3>
+                <h3 class="card-title">${title}</h3>
             </div>
 
             <a href="${href}?heading=${heading}"  ${url} class="btn btn-link ml-auto">

@@ -1,26 +1,32 @@
 [
     {
         "heading": "Safe / Unsafe Acts",
-        "href": "/Pages/IncidentReporting/SafeUnsafeActs.html"
+        "href": "/Pages/IncidentReporting/SafeUnsafeActs.html",
+        "urdu": "محفوظ/غیر محفوظ اعمال"
     },
     {
         "heading": "Hazard Reporting",
-        "href": "/Pages/IncidentReporting/hazardReporting.html"
+        "href": "/Pages/IncidentReporting/hazardReporting.html",
+        "urdu":"خطرے کی اطلاع"
     },
     {
         "heading": "Incident Reporting",
-        "href": "/Pages/IncidentReporting/IncidentReporting.html"
+        "href": "/Pages/IncidentReporting/IncidentReporting.html",
+        "urdu": "واقعہ کی اطلاع"
     },
     {
         "heading": "Deep Compliance Audit",
-        "href": "/Pages/checklistType.html"
+        "href": "/Pages/checklistType.html",
+        "urdu": "گہری مطابقت جانچ پڑتال"
     },
     {
         "heading": "Planned Inspection",
-        "href": "/Pages/checklistType.html"
+        "href": "/Pages/checklistType.html",
+        "urdu": "منصوبہ بند معائنہ"
     },
     {
         "heading": "Safety Action Meeting (SAM)",
-        "href": "safetyactionmeeting.html"
+        "href": "safetyactionmeeting.html",
+        "urdu": "حفاظتی کارروائی کی ملاقات"
     }
 ]

@@ -29,24 +29,90 @@
     <div class="container">
         <form id="safeUnsafeAct">
             <div class="form-group" id="actType">
-                <label for="actType">Act Type</label>
-                <select class="form-control" id="ActTyp">
-                    <option value="SafeAct">Safe Act</option>
-                    <option value="UnsafeAct">Unsafe Act</option>
+                <!-- <label for="actType">Act Type</label> -->
+                <label for="actType">
+                    <span class="english-text">Act Type</span>
+                    <span class="urdu-text" lang="ur">قانونی قسم</span>
+                  </label>
+                  <select class="form-control" id="ActTyp">
+                    <option value="SafeAct" class="english-text">
+                        Safe Act
+                    </option>
+                    <option value="UnsafeAct" class="english-text">
+                        Unsafe Act
+                    </option>
+                    <option value="SafeAct" class="urdu-text" lang="ur">
+                        محفوظ عمل
+                    </option>
+                    <option value="UnsafeAct" class="urdu-text" lang="ur">
+                        غیر محفوظ عمل
+                    </option>
                 </select>
             </div>
             <div id="initialCommonFields"></div>
 
             <div id="terminalCommonFields"></div>
-            <button class="btn btn-secondary btn-block" type="button" onclick="getFormValues('safeUnsafeAct','api/changeform/savechangeformdata')">Submit</button>
+            <button class="btn btn-secondary btn-block" type="button" onclick="getFormValues('safeUnsafeAct', 'api/changeform/savechangeformdata')">
+                <span class="english-text">Submit</span>
+                <span class="urdu-text" lang="ur">جمع کرائیں</span>
+              </button>
         </form>
     </div>
 
     <script src="../../Js/HeaderTitle.js"></script>
     <script src="../../Helpers/FormDataHandler.js"></script>
+    <script src="../../Js/LanguageSelection.js"></script>
 
     <script>
-        
+        const selectElement = document.getElementById("ActTyp");
+
+        if (selectedLanguage) {
+            for (const option of selectElement.options) {
+                if (option.getAttribute('lang') === selectedLanguage) {
+                    option.selected = true;
+                    break;
+                }
+            }
+        }
+
+
+// const selectElement = document.getElementById("ActTyp");
+// const englishOptions = document.querySelectorAll(".english-text");
+// const urduOptions = document.querySelectorAll(".urdu-text");
+// const selectedLanguage = localStorage.getItem('previousLanguage');
+
+// function toggleOptions(selectedLanguage) {
+//     if (selectedLanguage === 'en') {
+//         englishOptions.forEach(option => {
+//             option.style.display = 'inline';
+//         });
+//         urduOptions.forEach(option => {
+//             option.style.display = 'none';
+//         });
+//     } else {
+//         englishOptions.forEach(option => {
+//             option.style.display = 'none';
+//         });
+//         urduOptions.forEach(option => {
+//             option.style.display = 'inline';
+//         });
+//     }
+// }
+
+// // Get the stored language value from localStorage
+
+// // Call the function initially to toggle the options based on the stored value
+// toggleOptions(selectedLanguage);
+
+// if (selectedLanguage) {
+//     for (const option of selectElement.options) {
+//         if (option.getAttribute('lang') === selectedLanguage) {
+//             option.selected = true;
+//             break;
+//         }
+//     }
+// }
+
     </script>
 </body>
 

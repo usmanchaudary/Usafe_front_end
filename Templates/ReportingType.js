@@ -9,9 +9,7 @@ const createReportingTypeTemplate = (heading, href, urdu) => {
   var url_string = window.location.href;
   var url = new URL(url_string);
 
-  url = url.pathname.includes("reportingType.html")
-    ? `onclick="setValue('sectionFor', '${heading}')"`
-    : "";
+  url = url.pathname.includes("reportingType.html") || url.pathname.includes("EnvironmentalChanges.html") ? `onclick="setValue('sectionFor', '${heading}')"` : "";
 
   return `<div class="card shadow container" style="margin-bottom: 22px;">
     <div class="card-body">

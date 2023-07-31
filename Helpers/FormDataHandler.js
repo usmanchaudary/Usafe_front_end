@@ -3,9 +3,13 @@ function getFormValues(formId, url) {
   var elements = form.elements;
   let formName = localStorage.getItem("sectionFor");
   let reportedBy = localStorage.getItem("userName");
+  let IsEnvironmental = localStorage.getItem("IsEnvironmental");
+  let siteId = localStorage.getItem("siteId");
   var values = {formName};
   values["userName"] = reportedBy;
- 
+  values["IsEnvironmental"] = IsEnvironmental;
+  values["siteId"] = siteId;
+  
   let containFiles = false;
   for (var i = 0; i < elements.length; i++) {
     var element = elements[i];

@@ -164,6 +164,7 @@ const submitResultSet = () => {
   let parent = getValue("sectionFor");
   //add checkList Name in resultSet
   let reportedBy = localStorage.getItem("userName");
+  let siteId = localStorage.getItem("siteId");
   let department = $("#department option:selected").text();
   let area = $("#area option:selected").text();
   resultSet = {
@@ -172,6 +173,7 @@ const submitResultSet = () => {
     reportedBy,
     department,
     area,
+    siteId,
     checkListData: resultSet,
   };
 

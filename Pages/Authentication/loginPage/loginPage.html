@@ -1,32 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+        integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/b576bd8d3c.js" crossorigin="anonymous"></script>
     <script src="../../../Global/URLS.js"></script>
     <script src="../../../Helpers/HttpHandler.js"></script>
 
-    <link rel="stylesheet" href="../loginPage/loginPage.css" >
+    <link rel="stylesheet" href="../loginPage/loginPage.css">
 </head>
+
 <body>
     <form class="formLogin">
         <div class="logo">
             <img src="../../../assets/usafeLogo.png" alt="logo" />
-            <select id="languageSelect" onchange="changePlaceholder()">
-                <option value="en">English</option>
-                <option value="ur">Urdu</option>
-              </select>
+
         </div>
 
         <div class="input-container">
             <!-- <BsFillPersonFill class="loginIcon" /> -->
             <i class="fa fa-user loginIcon" aria-hidden="true"></i>
-            <input placeholder="Email" id="username" class="input-field" type="text"/>
+            <input placeholder="Email" id="username" class="input-field" type="text" />
             <label for="input-field" class="input-label">
                 <span class="english-text">Email</span>
                 <span class="urdu-text" lang="ur">ای میل</span>
@@ -38,14 +40,14 @@
             <!-- <AiOutlineLock class="loginIcon" /> -->
             <i class="fa fa-lock loginIcon" aria-hidden="true"></i>
             <i class="fa fa-eye passCheck" aria-hidden="true"></i>
-            <input placeholder="Password" id="password" class="input-field" type="password"/>
+            <input placeholder="Password" id="password" class="input-field" type="password" />
             <label for="input-field" class="input-label">
                 <span class="english-text">Password</span>
                 <span class="urdu-text" lang="ur">پاس ورڈ</span>
             </label>
         </div>
 
-        <a class="loginLink">
+        <a class="loginLink" href="https://usafe.innidata.com/Identity/Account/ForgotPassword">
             <span class="english-text">Forget Password?</span>
             <span class="urdu-text" lang="ur">پاسورڈ بھول گے؟</span>
         </a>
@@ -55,9 +57,16 @@
             <span class="english-text">Login</span>
             <span class="urdu-text" lang="ur">لاگ ان</span>
         </button>
+
+        <select class="input-field" style="margin-top:80%;margin-bottom: 0%;" id="languageSelect" onchange="changePlaceholder()">
+            <option value="en">English</option>
+            <option value="ur">Urdu</option>
+        </select>
     </form>
+    
 
     <script src="../../../Js/Authentication/Login.js"></script>
     <script src="../../../Js/LanguageSelection.js"></script>
 </body>
+
 </html>

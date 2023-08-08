@@ -21,6 +21,8 @@ const sendRequest = (url, method, body, successCallback) => {
         localStorage.clear();
         window.location.href = "/Pages/Authentication/loginPage/loginPage.html";
       }
+      //if any button is disabled then enable it
+      $('button').attr('disabled',false);
       alert("some error occured");
     },
   });
@@ -50,6 +52,7 @@ const sendRequestWithFiles = (url, method, body, successCallback) => {
         localStorage.clear();
         window.location.href = "/Pages/Authentication/loginPage/loginPage.html";
       }
+      $('button').attr('disabled',false);
       alert("some error occured");
     },
   });

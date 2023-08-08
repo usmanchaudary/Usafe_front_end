@@ -1,24 +1,28 @@
-function getFormValues(formId, url) {
+function getFormValues(formId, url, obj) {
+  //disable the submit button
+  $(obj).attr("disabled", true);
   var form = document.getElementById(formId);
   var elements = form.elements;
   let formName = localStorage.getItem("sectionFor");
   let reportedBy = localStorage.getItem("userName");
   let IsEnvironmental = localStorage.getItem("IsEnvironmental");
   let siteId = localStorage.getItem("siteId");
-  var values = {formName};
+  var values = { formName };
   values["userName"] = reportedBy;
   values["IsEnvironmental"] = IsEnvironmental;
   values["siteId"] = siteId;
-  
+
   let containFiles = false;
   for (var i = 0; i < elements.length; i++) {
     var element = elements[i];
     var fieldName = element.id || element.name;
     var fieldType = element.type;
-    if(element.value === "Select"){
-      alert("Please select a value for "+element.id);
+    if (element.value.includes("Select")) {
+      alert("Please select a value for " + element.id);
       //border color change to red
       element.style.borderColor = "red";
+      $(obj).attr("disabled", false);
+
       return;
     }
     if (
@@ -35,10 +39,9 @@ function getFormValues(formId, url) {
         values[fieldName] = element.value;
       } else if (element.multiple) {
         values[fieldName] = getMultipleSelectValues(element);
-      }else if(fieldType === "radio"){
+      } else if (fieldType === "radio") {
         values[fieldName] = $(`input[name="${fieldName}"]:checked`).val();
-      }
-      else {
+      } else {
         values[fieldName] = element.value;
       }
     }
@@ -58,7 +61,6 @@ function getFormValues(formId, url) {
     values = picturesFormData;
   }
   if (url && values) {
-    
     sendRequestWithFiles(url, "POST", values);
   }
   console.log(values);
@@ -78,7 +80,9 @@ function getFileValues(fileElement) {
 }
 
 function getMultipleSelectValues(selectElement) {
-  var selectedOptions = Array.from(selectElement.selectedOptions).map(function (option) {
+  var selectedOptions = Array.from(selectElement.selectedOptions).map(function (
+    option
+  ) {
     return option.value;
   });
 

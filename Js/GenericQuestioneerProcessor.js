@@ -66,7 +66,7 @@ const createChecklistFormWizard = (questions) => {
   // Resulting page with accordion
   let resultHtml = "";
     resultHtml = createResultHtml(questions);
-   resultHtml += `<button class="btn btn-dark btn-block mt-lg-3" style="background-color: black; color: white;" onclick="submitResultSet()">Submit</button>
+   resultHtml += `<button class="btn btn-dark btn-block mt-lg-3" style="background-color: black; color: white;" onclick="submitResultSet(this)">Submit</button>
   </div>
 `;
   return { wizardHtml, resultHtml };
@@ -160,7 +160,9 @@ const displayResults = () => {
   }
 };
 
-const submitResultSet = () => {
+const submitResultSet = (obj) => {
+  //disable button
+  $(obj).attr("disabled", true);
   let parent = getValue("sectionFor");
   //add checkList Name in resultSet
   let reportedBy = localStorage.getItem("userName");

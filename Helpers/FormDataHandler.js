@@ -15,7 +15,12 @@ function getFormValues(formId, url) {
     var element = elements[i];
     var fieldName = element.id || element.name;
     var fieldType = element.type;
-
+    if(element.value === "Select"){
+      alert("Please select a value for "+element.id);
+      //border color change to red
+      element.style.borderColor = "red";
+      return;
+    }
     if (
       fieldName &&
       fieldType !== "submit" &&

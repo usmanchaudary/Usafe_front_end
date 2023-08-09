@@ -104,7 +104,7 @@
                 </tr>
             </thead>
             <tbody id="tableBody">
-              
+
             </tbody>
         </table>
 
@@ -119,8 +119,8 @@
 
         </div>
 
+        <button class="btn btn-block btn-secondary mb-lg-3" onclick="submitData()" style="background-color: black;">Submit</button>
     </div>
-
 
 
     <!-- Modal -->
@@ -152,13 +152,11 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" onclick="addAction()"
-                        data-dismiss="modal">OK</button>
+                    <button type="button" class="btn btn-warning btn-block" onclick="addAction()"data-dismiss="modal">Done</button>
                 </div>
             </div>
         </div>
     </div>
-
 
 
 </body>
@@ -169,7 +167,43 @@
         location.href = url;
     }
 
+    const submitData = ()=>{
+        let department = $('#department :selected').val();
+        let area = $('#area :selected').val();
+        let leader = $('#leader').val();
+        let Participants = $('#Participants').val();
+        let Topic = $('#Topic').val();
+        let facts = $('#facts').val();
+        let targetDate = $('#targetDate').val();
+        let targetTime = $('#targetTime').val();
+        let siteId = getValue("siteId");
+        let userId = getValue("userName");
+        let data = {
+            "department": department,
+            "area": area,
+            "leader": leader,
+            "Participants": Participants,
+            "Topic": Topic,
+            "facts": facts,
+            "targetDate": targetDate,
+            "targetTime": targetTime,
+            "siteId": siteId,
+            "userId": userId,
+            "resultArray": resultArray
+        };
+        sendRequest(`SafetyActionMeeting/SaveSafetyActionMeeting`, "POST", JSON.stringify(data), (response) => {
+            if(response.status == 200){
+                alert("Data Saved Successfully");
+                location.href = "/Pages/reportingType.html";
+            }
+            else{
+                alert("Error Occured");
+            }
+        });
+
+    }
     const addAction = () => {
+
         let description = $('#Actions').val();
         let raisedBy = $('#RaisedBy').text();
         let responsible = $('#Responsible :selected').val();
@@ -178,18 +212,37 @@
             "description": description,
             "raisedBy": raisedBy,
             "responsible": responsible,
-            "targetDate": targetDate
+            "targetDate": targetDate,
+            srno
         });
         let html = `<tr>
-                <td>${srno++}</td>
+                <td>${srno}</td>
                 <td>${description}</td>
                 <td>
                     
-                    <i class="fas fa-edit"></i>
-                    <i class="fas fa-trash"></i>
+                    <i class="fas fa-edit" onclick="openEditModal(${srno})"></i>
+                    <i class="fas fa-trash" onclick="deleteAction(${srno},this)"></i>
                 </td>
             </tr>`
         $('#tableBody').append(html);
+        srno++;
+    }
+
+    const openEditModal = (srno) => {
+        let action = resultArray.find(x => x.srno == srno);
+        $('#Actions').val(action.description);
+        $('#RaisedBy').text(action.raisedBy);
+        $('#Responsible').val(action.responsible);
+        $('#targetDate').val(action.targetDate);
+        $('#VoteModal').modal('show');
+
+    }
+
+    const deleteAction = (srno,obj) =>{
+        let action = resultArray.find(x => x.srno == srno);
+        let index = resultArray.indexOf(action);
+        resultArray.splice(index,1);
+        $(obj).parent().parent().remove();
     }
 
     const createInitialElements = () => {

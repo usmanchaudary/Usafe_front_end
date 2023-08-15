@@ -3,7 +3,7 @@ name: Sync to S3 and Invalidate CloudFront
 on:
   push:
     branches:
-      - Data_Reconciliation
+      - main
 
 jobs:
   build-and-deploy:

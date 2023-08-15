@@ -21,4 +21,4 @@ jobs:
         run: |
           DISTRIBUTION_ID="E23SIJEOYODOI2"
           INVALIDATION_BATCH='{"Paths":{"Quantity":1,"Items":["/*"]},"CallerReference":"'$(date)'" }'
-          aws cloudfront create-invalidation --distribution-id $DISTRIBUTION_ID --invalidation-batch "$INVALIDATION_BATCH"
+          aws cloudfront create-invalidation --distribution-id $DISTRIBUTION_ID --invalidation-batch "$INVALIDATION_BATCH" 

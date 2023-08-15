@@ -16,7 +16,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: eu-west-2
       - name: Sync files to S3
-        run: aws s3 sync ./build s3://mobile.usafe.innidata.com --delete
+        run: aws s3 sync . s3://mobile.usafe.innidata.com --delete
       - name: Invalidate CloudFront cache
         run: |
           DISTRIBUTION_ID="E23SIJEOYODOI2"

@@ -18,11 +18,13 @@ body{
     align-items: center;
     flex-direction: column;
     cursor: pointer;
+    
 }
 .taskIcons a, .faIcon{
     color: white;
     display: flex;
     text-decoration: unset;
+    flex-direction: column;
 }
 /* add active class for faIcon */
 .faIcon.active{

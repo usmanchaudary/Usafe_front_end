@@ -14,13 +14,12 @@ const createReportingTypeTemplate = (heading, href, urdu) => {
   return `<div class="card shadow container" style="margin-bottom: 22px;">
     <div class="card-body">
         <div class="row">
+          <a href="${href}?heading=${heading}"  ${url} class="btn btn-link ml-auto">
             <div class="col-mg-10">
                 <h3 class="card-title">${title}</h3>
             </div>
-
-            <a href="${href}?heading=${heading}"  ${url} class="btn btn-link ml-auto">
-                <i class="fas fa-chevron-circle-right"></i>
-            </a>
+            <i class="fas fa-chevron-circle-right"></i>
+          </a>
         </div>
     </div>
 </div>`;

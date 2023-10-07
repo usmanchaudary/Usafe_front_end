@@ -39,7 +39,7 @@
         <div class="input-container">
             <!-- <AiOutlineLock class="loginIcon" /> -->
             <i class="fa fa-lock loginIcon" aria-hidden="true"></i>
-            <i class="fa fa-eye passCheck" aria-hidden="true"></i>
+            <i class="fa fa-eye passCheck" onclick="showPassword()" aria-hidden="true"></i>
             <input placeholder="Password" id="password" class="input-field" type="password" />
             <label for="input-field" class="input-label">
                 <span class="english-text">Password</span>
@@ -67,6 +67,20 @@
 
     <script src="../../../Js/Authentication/Login.js"></script>
     <script src="../../../Js/LanguageSelection.js"></script>
+    <script>
+        function showPassword(){
+            var x = document.getElementById("password");
+            if (x.type === "password") {
+                x.type = "text";
+                $(".passCheck").removeClass("fa-eye");
+                $(".passCheck").addClass("fa-eye-slash");
+            } else {
+                x.type = "password";
+                $(".passCheck").removeClass("fa-eye-slash");
+                $(".passCheck").addClass("fa-eye");
+            }
+        }
+        </script>
 </body>
 
 </html>

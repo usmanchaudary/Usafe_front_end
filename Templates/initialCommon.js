@@ -17,7 +17,6 @@ const createInputElements = (element) => {
   const name =
     selectedLanguage === "ur" && element.urdu ? element.urdu : element.name;
   if (element.type == "file") {
-    createDevExtremeFileUploader(element);
 
     return createFileInput(element);
   }

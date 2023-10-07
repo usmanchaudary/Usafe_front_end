@@ -70,7 +70,7 @@ function getFormValues(formId, url, obj) {
 }
 function getFileValues(fileElement) {
   var formData = new FormData();
-
+  
   for (var i = 0; i < fileElement.files.length; i++) {
     var file = fileElement.files[i];
     formData.append("pictures", file);

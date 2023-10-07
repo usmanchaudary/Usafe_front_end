@@ -12,6 +12,9 @@
     <script src="https://kit.fontawesome.com/b576bd8d3c.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"
         integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn3.devexpress.com/jslib/23.1.5/css/dx.material.blue.light.css" />
+    <script src="https://cdn3.devexpress.com/jslib/23.1.5/js/dx.all.js"></script>
     <script src="../../Templates/initialCommon.js"></script>
     <script src="../../Js/Common/Initials.js"></script>
     <script src="../../Js/Common/Teminal.js"></script>
@@ -19,7 +22,7 @@
     <script src="../../Global/URLS.js"></script>
 
     <script src="../../Helpers/HttpHandler.js"></script>
-  <script src="../../Js/Authentication/CheckUser.js"></script>
+    <script src="../../Js/Authentication/CheckUser.js"></script>
 
 
 </head>
@@ -33,8 +36,8 @@
                 <label for="actType">
                     <span class="english-text">Act Type</span>
                     <span class="urdu-text" lang="ur">قسم</span>
-                  </label>
-                  <select class="form-control" id="ActTyp">
+                </label>
+                <select class="form-control" id="ActTyp">
                     <option value="SafeAct" class="english-text">
                         Safe Act
                     </option>
@@ -52,10 +55,11 @@
             <div id="initialCommonFields"></div>
 
             <div id="terminalCommonFields"></div>
-            <button class="btn btn-secondary btn-block" type="button" onclick="getFormValues('safeUnsafeAct', 'api/changeform/savechangeformdata',this)">
+            <button class="btn btn-secondary btn-block" type="button"
+                onclick="getFormValues('safeUnsafeAct', 'api/changeform/savechangeformdata',this)">
                 <span class="english-text">Submit</span>
                 <span class="urdu-text" lang="ur">جمع کرائیں</span>
-              </button>
+            </button>
         </form>
     </div>
 
@@ -76,42 +80,42 @@
         }
 
 
-// const selectElement = document.getElementById("ActTyp");
-// const englishOptions = document.querySelectorAll(".english-text");
-// const urduOptions = document.querySelectorAll(".urdu-text");
-// const selectedLanguage = localStorage.getItem('previousLanguage');
+        // const selectElement = document.getElementById("ActTyp");
+        // const englishOptions = document.querySelectorAll(".english-text");
+        // const urduOptions = document.querySelectorAll(".urdu-text");
+        // const selectedLanguage = localStorage.getItem('previousLanguage');
 
-// function toggleOptions(selectedLanguage) {
-//     if (selectedLanguage === 'en') {
-//         englishOptions.forEach(option => {
-//             option.style.display = 'inline';
-//         });
-//         urduOptions.forEach(option => {
-//             option.style.display = 'none';
-//         });
-//     } else {
-//         englishOptions.forEach(option => {
-//             option.style.display = 'none';
-//         });
-//         urduOptions.forEach(option => {
-//             option.style.display = 'inline';
-//         });
-//     }
-// }
+        // function toggleOptions(selectedLanguage) {
+        //     if (selectedLanguage === 'en') {
+        //         englishOptions.forEach(option => {
+        //             option.style.display = 'inline';
+        //         });
+        //         urduOptions.forEach(option => {
+        //             option.style.display = 'none';
+        //         });
+        //     } else {
+        //         englishOptions.forEach(option => {
+        //             option.style.display = 'none';
+        //         });
+        //         urduOptions.forEach(option => {
+        //             option.style.display = 'inline';
+        //         });
+        //     }
+        // }
 
-// // Get the stored language value from localStorage
+        // // Get the stored language value from localStorage
 
-// // Call the function initially to toggle the options based on the stored value
-// toggleOptions(selectedLanguage);
+        // // Call the function initially to toggle the options based on the stored value
+        // toggleOptions(selectedLanguage);
 
-// if (selectedLanguage) {
-//     for (const option of selectElement.options) {
-//         if (option.getAttribute('lang') === selectedLanguage) {
-//             option.selected = true;
-//             break;
-//         }
-//     }
-// }
+        // if (selectedLanguage) {
+        //     for (const option of selectElement.options) {
+        //         if (option.getAttribute('lang') === selectedLanguage) {
+        //             option.selected = true;
+        //             break;
+        //         }
+        //     }
+        // }
 
     </script>
 </body>

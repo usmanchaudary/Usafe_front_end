@@ -36,7 +36,6 @@ const createDevExtremeFileUploader = (element) => {
   $("#file-uploader").dxFileUploader({
     selectButtonText: "Select photo",
     labelText: '',
-    accept: "image/*",
     uploadMode: "useForm",
     name:"pictures",
     multiple: true,

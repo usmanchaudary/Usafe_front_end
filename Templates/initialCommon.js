@@ -38,7 +38,7 @@ const createDevExtremeFileUploader = (element) => {
     labelText: '',
     uploadMode: "useForm",
     name:"pictures",
-    multiple: true,
+    multiple: false,
   });
 };
 

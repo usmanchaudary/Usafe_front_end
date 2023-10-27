@@ -17,7 +17,7 @@ const createTasks = (tasks) => {
           <p>${task.status}</p>
           <p>${task.formName}</p>
           <p>${task.assignedTo}</p>
-          <p>${task.createdDate}</p>
+          <p>${new Date(task.createdDate).toDateString()}</p>
         </div>
 
       </div>

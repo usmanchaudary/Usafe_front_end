@@ -22,7 +22,7 @@ const createInputElements = (element) => {
   }
   return `<div class="form-group">
     <label for="${element.name}">${name}</label>
-    <${element.elementTag} type="${element.type}" accept="image/png, image/gif, image/jpeg" ${element.multiple} class="form-control" id="${element.name}" placeholder="${element.name}" col="10" row="20" ></${element.elementTag}>
+    <${element.elementTag} type="${element.type}" ${element.multiple} class="form-control" id="${element.name}" placeholder="${element.name}" col="10" row="20" ></${element.elementTag}>
     </div>`;
 };
 

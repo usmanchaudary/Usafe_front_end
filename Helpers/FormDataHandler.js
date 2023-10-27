@@ -13,6 +13,7 @@ function getFormValues(formId, url, obj) {
   values["siteId"] = siteId;
 
   let containFiles = false;
+  let dataTime = "";
   for (var i = 0; i < elements.length; i++) {
     var element = elements[i];
     var fieldName = element.id || element.name;
@@ -35,8 +36,8 @@ function getFormValues(formId, url, obj) {
         values[fieldName] = element.checked;
       } else if (fieldType === "file") {
         containFiles = true;
-      } else if (fieldType === "datetime-local") {
-        values[fieldName] = element.value;
+      } else if (fieldType === "date"  || fieldType === "time") {
+        dataTime += element.value+" ";
       } else if (element.multiple) {
         values[fieldName] = getMultipleSelectValues(element);
       } else if (fieldType === "radio") {
@@ -45,6 +46,9 @@ function getFormValues(formId, url, obj) {
         values[fieldName] = element.value;
       }
     }
+  }
+  if (dataTime) {
+    values["Date"] = new Date(dataTime);
   }
 
   if (containFiles) {

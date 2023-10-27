@@ -39,8 +39,13 @@
     {
         "name": "Date",
         "elementTag": "input",
-        "type": "datetime-local",
-
+        "type": "date",
         "urdu": "تاریخ"
+    },
+    {
+        "name": "Time",
+        "elementTag": "input",
+        "type": "time",
+        "urdu": "وقت"
     }
 ]

@@ -20,6 +20,7 @@ const sendRequest = (url, method, body, successCallback) => {
         alert("Your session has expired. Please login again");
         localStorage.clear();
         window.location.href = "/Pages/Authentication/loginPage/loginPage.html";
+        return;
       }
       //if any button is disabled then enable it
       $('button').attr('disabled',false);
@@ -51,6 +52,7 @@ const sendRequestWithFiles = (url, method, body, successCallback) => {
         alert("Your session has expired. Please login again");
         localStorage.clear();
         window.location.href = "/Pages/Authentication/loginPage/loginPage.html";
+        return;
       }
       $('button').attr('disabled',false);
       alert("some error occured");

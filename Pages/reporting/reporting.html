@@ -55,6 +55,12 @@
   <script src="../../Templates/reports.js"></script>
   <script src="../../Components/floatBtn/index.js"></script>
   <script src="../../Components/taskBar/index.js"></script>
+<script>
+  //create an on focus event and onfocus call fetchReport Function
+  $(window).focus(function() {
+    fetchReports();
+  });
+</script>
 </body>
 
 </html>

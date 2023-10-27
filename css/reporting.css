@@ -25,9 +25,7 @@ body{
     margin-bottom: 100px;
     margin-top: 210px;
 }
-.reporting{ 
 
-}
 .ReportCountContainerSecond{
     display: flex;
     justify-content: space-between;
@@ -35,7 +33,16 @@ body{
     background-color: white;
     position: fixed;
     width: 100%;
-    top:128px;
+    top:165px;
+}
+
+.SampleButtonClass{
+    display: flex;
+    justify-content: end;
+    border-bottom: 2px solid white;
+    position: fixed;
+    width: 100%;
+    top: 140px;;
 }
 .ReportCountContentSecond{
     font-weight: bolder;

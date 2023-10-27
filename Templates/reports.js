@@ -22,8 +22,8 @@ const reports = (imageSrc, status, formName, assignedTo, date,entity,id) => {
         </div>
 
       </div>
-      <div class='ReportBorder'/>
-      <button class='ReportButton' onclick= "NavigateToDetails('${entity}',${id})">VIEW DETAILS</button>
+      <div class='ReportBorder'> </div>
+      <button class='btn btn-warning btn-block' onclick= "NavigateToDetails('${entity}',${id})">VIEW DETAILS</button>
 
     </div>
   `;
@@ -33,10 +33,12 @@ const fetchReports = () => {
   let username = localStorage.getItem("userName");
  
   sendRequest("api/ChangeForm/fetchReports?userName="+username, "GET",{}, (data) => {
-    reportCountCaller(data.length)
+    reportCountCaller(data.length);
+    let html = ``;
     for (const iterator of data) {
-      $(".reports").append(reports(iterator.files? JSON.parse(iterator.files)[0]: "", iterator.status, iterator.formName, iterator.assignedTo, iterator.createdDate, iterator.entity ,iterator.id));
+      html += reports(iterator.files? JSON.parse(iterator.files)[0]: "", iterator.status, iterator.formName, iterator.assignedTo, iterator.createdDate, iterator.entity ,iterator.id);
     }
+    $(".reports").html(html);
   });
 
 };

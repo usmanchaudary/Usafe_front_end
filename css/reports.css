@@ -20,12 +20,14 @@ body{
     width: auto;
     height: 150px;
     padding: 10px;
+    object-fit: cover;
 }
 .ReportImage {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 20%;
+    overflow: hidden;
 }
 .ReportBorder{
     height: 2px;

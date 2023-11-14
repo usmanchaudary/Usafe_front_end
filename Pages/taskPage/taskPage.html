@@ -24,12 +24,14 @@
     <link rel="stylesheet" href="../../css/floatBtn.css">
     <link rel="stylesheet" href="../../css/taskBar.css">
     <link rel="stylesheet" href="../../css/header.css">
+    <link rel="stylesheet" href="../../css/loader.css">
     <script src="../../Templates/Header.js"></script>
   <script src="../../Js/Authentication/CheckUser.js"></script>
 
 </head>
 
 <body>
+    <span id="load"></span>
 
     <div id="header"></div>
 
@@ -86,7 +88,18 @@
     <script src="../../Global/URLS.js"></script>
     <script src="../../Helpers/HttpHandler.js"></script>
     <script src="../../Js/myTasks.js"></script>
-
+    <script>
+        //create an on focus event and onfocus call fetchReport Function
+        document.onreadystatechange = function () {
+          var state = document.readyState
+          if (state == 'complete') {
+            setTimeout(function () {
+              document.getElementById('interactive');
+              document.getElementById('load').style.visibility = "hidden";
+            }, 1000);
+          }
+        }
+      </script>
 </body>
 
 </html>

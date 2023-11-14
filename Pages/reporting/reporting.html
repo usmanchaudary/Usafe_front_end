@@ -25,9 +25,11 @@
   <link rel="stylesheet" href="../../css/reportCount.css">
   <link rel="stylesheet" href="../../css/floatBtn.css">
   <link rel="stylesheet" href="../../css/taskBar.css">
+  <link rel="stylesheet" href="../../css/loader.css">
 </head>
 
 <body>
+  <span id="load"></span>
   <div class='RepHeader'>My Reportings</div>
   <div class="reporting">
     <div class="reportCount "></div>
@@ -37,10 +39,11 @@
       <p class='ReportCountContentSecond'>0</p>
     </div>
     <div class="ReportCountContainerSecond">
-      
+
       <div class="SampleButtonClass">
 
-        <button class=" btn btn-primary btn-sm" onclick="fetchReports()"><i class="fa fa-refresh"></i> Refresh Tasks</button>
+        <button class=" btn btn-primary btn-sm" onclick="fetchReports()"><i class="fa fa-refresh"></i> Refresh
+          Tasks</button>
       </div>
     </div>
 
@@ -67,7 +70,15 @@
   <script src="../../Components/taskBar/index.js"></script>
   <script>
     //create an on focus event and onfocus call fetchReport Function
-
+    document.onreadystatechange = function () {
+      var state = document.readyState
+      if (state == 'complete') {
+        setTimeout(function () {
+          document.getElementById('interactive');
+          document.getElementById('load').style.visibility = "hidden";
+        }, 1000);
+      }
+    }
   </script>
 </body>
 

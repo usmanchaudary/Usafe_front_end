@@ -24,10 +24,13 @@
   <script src="../../Templates/Header.js"></script>
   <script src="../../Templates/GenericCheckList.js"></script>
   <script src="../../Js/Authentication/CheckUser.js"></script>
-  
+  <link rel="stylesheet" href="../../css/loader.css">
+
 </head>
 
 <body>
+  <span id="load"></span>
+
   <div id="header"></div>
   <div class='RepDetailsContainer'>
     <div class='RepDetailsContent' id="detailsDiv">
@@ -111,7 +114,19 @@
       
       
       $("#detailsDiv").html(html);
-    })
+    });
+    </script>
+    <script>
+    //create an on focus event and onfocus call fetchReport Function
+    document.onreadystatechange = function () {
+      var state = document.readyState
+      if (state == 'complete') {
+        setTimeout(function () {
+          document.getElementById('interactive');
+          document.getElementById('load').style.visibility = "hidden";
+        }, 1000);
+      }
+    }
   </script>
 </body>
 

@@ -3,7 +3,7 @@ const reports = (imageSrc, status, formName, assignedTo, date,entity,id) => {
       <div class='ReportContent'>
 
         <div class='ReportImage'>
-          <img src="${imageSrc}" alt="report"/>
+          <img src="${imageSrc}" alt="no image found"/>
         </div>
 
         

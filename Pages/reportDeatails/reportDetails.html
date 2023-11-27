@@ -103,7 +103,6 @@
     </div>`;
           }
         }
-
       }
       //if checklist data is present then create html for it
       else if(data.checkListData){
@@ -111,7 +110,11 @@
         html = createResultHtml(questions);
         html+= `</div>`;
       }
-      
+      else if (data.actions){
+        let actions = data.actions;
+        html = createSafetyActionsHtml(actions);
+        html += `</div>`;
+      }
       
       $("#detailsDiv").html(html);
     });

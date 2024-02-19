@@ -35,7 +35,7 @@ const createChecklistFormWizard = (questions) => {
         <div class="form-group">
           <input id="compliance${questionId}" value="NonCompliant" type="radio" name="Compliance${questionId}" />
           <label>Non Compliant</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <input id="compliance${questionId}" value="Compliant" type="radio" name="Compliance${questionId}" />
+          <input id="compliance${questionId}" checked value="Compliant" type="radio" name="Compliance${questionId}" />
           <label>Compliant</label> 
         </div>
 
@@ -57,7 +57,7 @@ const createChecklistFormWizard = (questions) => {
         </div>
 
         <button class="btn btn-secondary  float-right ml-lg-5" style="width: 20%; "  onclick="handleNext(${questions.length})"> Next </button>
-        <button  class="btn btn-warning float-right" style="width: 20%;" onclick="handleSkip(${questions.length})"> Skip </button>
+        <button  class="btn btn-warning float-right" style="width: 20%;display:none" onclick="handleSkip(${questions.length})"> Skip </button>
         <button class="btn btn-warning float-left" style="width: 20%;" onclick="handleBack()"> Back </button>
 
         </div>`;
@@ -145,7 +145,7 @@ const displayResults = () => {
 
     statusValue.textContent = status.value;
     actionsValue.textContent = actions.value;
-    responsibilityValue.textContent = responsibility.value;
+    responsibilityValue.textContent = responsibility.value == "Select Responsible Person" ? "" : responsibility.value;
 
     //fill the data in resultSet
     resultSet.push({
@@ -153,7 +153,7 @@ const displayResults = () => {
       compliance: selectedCompliance ? selectedCompliance.value : "",
       status: status.value,
       actions: actions.value,
-      responsibility: responsibility.value,
+      responsibility: responsibility.value == "Select Responsible Person" ? "" : responsibility.value,
       question: question.innerText,
       heading: heading.innerText,
     });
@@ -169,6 +169,33 @@ const submitResultSet = (obj) => {
   let siteId = localStorage.getItem("siteId");
   let department = $("#department option:selected").text();
   let area = $("#area option:selected").text();
+  if (department == "Select Department") {
+    alert("Please select department");
+    $(obj).attr("disabled", false);
+    return;
+  }
+  if (area == "Select Area") {
+    alert("Please select area");
+    $(obj).attr("disabled", false);
+    return;
+  }
+
+  //in resultSet every non-compliant should have value for responsibility and actions
+  let nonCompliant = resultSet.filter((x) => x.compliance == "NonCompliant");
+  let nonCompliantWithNoResponsibility = nonCompliant.filter(
+    (x) => x.responsibility == ""
+  );
+  let nonCompliantWithNoActions = nonCompliant.filter((x) => x.actions == "");
+  if (nonCompliantWithNoResponsibility.length > 0) {
+    alert("Please select responsible person for non-compliant checkpoint "+ nonCompliantWithNoResponsibility.map(x=>x.questionId).join(","));
+    $(obj).attr("disabled", false);
+    return;
+  }
+  if (nonCompliantWithNoActions.length > 0) {
+    alert(`Please provide actions for non-compliant checkpoint ${nonCompliantWithNoActions.map(x=>x.questionId).join(",")}`);
+    $(obj).attr("disabled", false);
+    return;
+  }
   resultSet = {
     parentCheckList: parent,
     checkListName: _currentCheckList,
@@ -193,8 +220,9 @@ const createInitialElements = () => {
   let wizardHtml = `
     <div class="container wizard-form active-form">
     <div class="form-group">
+    <label>Department</label>
     <select id="department" onchange="getAreas(this)" class="form-control">
-    <option value="0" >Select Department</option>`;
+    <option value="0" selected disabled hidden >Select Department</option>`;
 
   let departments = JSON.parse(getValue("departments"));
 
@@ -204,6 +232,7 @@ const createInitialElements = () => {
   wizardHtml += `</select>
     </div>`;
   wizardHtml += `<div class="form-group">
+    <label>Area</label>
     <select id="area" class="form-control" onchange="getResponsiblePersons()">
     <option value="0" >Select Area</option>
     </select>

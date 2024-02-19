@@ -17,12 +17,12 @@ const reports = (imageSrc, status, formName, assignedTo, date,entity,id) => {
         <div class='ReportDescriptions'>
           <p>${status}</p>
           <p>${formName}</p>
-          <p>${assignedTo}</p>
+          <p title = ${assignedTo}>${addStars(assignedTo)}</p>
           <p>${new Date(date).toDateString()}</p>
         </div>
 
       </div>
-      <div class='ReportBorder'> </div>
+      
       <button class='btn btn-warning btn-block' onclick= "NavigateToDetails('${entity}',${id})">VIEW DETAILS</button>
 
     </div>
@@ -47,3 +47,11 @@ fetchReports();
 const NavigateToDetails = (entity,id) => {
   window.location.href = "/Pages/reportDeatails/reportDetails.html?entity="+entity+"&id="+id;
 };
+
+//create a function which takes a string and add stars if length is greater than 20
+function addStars(str){
+  if(str.length > 20){
+    return str.slice(0,10) + "....";
+  }
+  return str;
+}

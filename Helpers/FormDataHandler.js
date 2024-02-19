@@ -18,26 +18,27 @@ function getFormValues(formId, url, obj) {
     var element = elements[i];
     var fieldName = element.id || element.name;
     var fieldType = element.type;
-    if (element.value.includes("Select")) {
-      alert("Please select a value for " + element.id);
-      //border color change to red
-      element.style.borderColor = "red";
-      $(obj).attr("disabled", false);
 
-      return;
-    }
     if (
       fieldName &&
       fieldType !== "submit" &&
       fieldType !== "reset" &&
       fieldType !== "button"
     ) {
+      if (element.value.includes("Select") || element.value === "" && fieldType !== "file") {
+        alert("Please select a value for " + element.id);
+        //border color change to red
+        element.style.borderColor = "red";
+        $(obj).attr("disabled", false);
+
+        return;
+      }
       if (fieldType === "checkbox") {
         values[fieldName] = element.checked;
       } else if (fieldType === "file") {
         containFiles = true;
-      } else if (fieldType === "date"  || fieldType === "time") {
-        dataTime += element.value+" ";
+      } else if (fieldType === "date" || fieldType === "time") {
+        dataTime += element.value + " ";
       } else if (element.multiple) {
         values[fieldName] = getMultipleSelectValues(element);
       } else if (fieldType === "radio") {
@@ -74,7 +75,7 @@ function getFormValues(formId, url, obj) {
 }
 function getFileValues(fileElement) {
   var formData = new FormData();
-  
+
   for (var i = 0; i < fileElement.files.length; i++) {
     var file = fileElement.files[i];
     formData.append("pictures", file);
@@ -91,4 +92,15 @@ function getMultipleSelectValues(selectElement) {
   });
 
   return selectedOptions;
+}
+
+function validateForm(element, obj) {
+  if (element.value.includes("Select") || element.value === "") {
+    alert("Please select a value for " + element.id);
+    //border color change to red
+    element.style.borderColor = "red";
+    $(obj).attr("disabled", false);
+
+    return;
+  }
 }

@@ -169,31 +169,15 @@ const submitResultSet = (obj) => {
   let siteId = localStorage.getItem("siteId");
   let department = $("#department option:selected").text();
   let area = $("#area option:selected").text();
-  if (department == "Select Department") {
-    alert("Please select department");
+ 
+  if(!validateChecklist(department, area))
+  {
+    currentIndex = 0;
+    handleNext(_questions.length, _questions);
+    resultSet.length = 0;
     $(obj).attr("disabled", false);
-    return;
-  }
-  if (area == "Select Area") {
-    alert("Please select area");
-    $(obj).attr("disabled", false);
-    return;
-  }
-
-  //in resultSet every non-compliant should have value for responsibility and actions
-  let nonCompliant = resultSet.filter((x) => x.compliance == "NonCompliant");
-  let nonCompliantWithNoResponsibility = nonCompliant.filter(
-    (x) => x.responsibility == ""
-  );
-  let nonCompliantWithNoActions = nonCompliant.filter((x) => x.actions == "");
-  if (nonCompliantWithNoResponsibility.length > 0) {
-    alert("Please select responsible person for non-compliant checkpoint "+ nonCompliantWithNoResponsibility.map(x=>x.questionId).join(","));
-    $(obj).attr("disabled", false);
-    return;
-  }
-  if (nonCompliantWithNoActions.length > 0) {
-    alert(`Please provide actions for non-compliant checkpoint ${nonCompliantWithNoActions.map(x=>x.questionId).join(",")}`);
-    $(obj).attr("disabled", false);
+    $("#wizardContainer").css("display", "block");
+    $("#resultContainer").css("display", "none");
     return;
   }
   resultSet = {
@@ -215,6 +199,38 @@ const submitResultSet = (obj) => {
     }
   });
 };
+
+const validateChecklist = (department, area) => {
+  if (department == "Select Department") {
+    alert("Please select department");
+  
+    return false;
+  }
+  if (area == "Select Area") {
+    alert("Please select area");
+     
+    return false;
+  }
+
+  //in resultSet every non-compliant should have value for responsibility and actions
+  let nonCompliant = resultSet.filter((x) => x.compliance == "NonCompliant");
+  let nonCompliantWithNoResponsibility = nonCompliant.filter(
+    (x) => x.responsibility == ""
+  );
+  let nonCompliantWithNoActions = nonCompliant.filter((x) => x.actions == "");
+  if (nonCompliantWithNoResponsibility.length > 0) {
+    alert("Please select responsible person for non-compliant checkpoint "+ nonCompliantWithNoResponsibility.map(x=>x.questionId).join(","));
+     
+    return false;
+  }
+  if (nonCompliantWithNoActions.length > 0) {
+    alert(`Please provide actions for non-compliant checkpoint ${nonCompliantWithNoActions.map(x=>x.questionId).join(",")}`);
+   
+    return false;
+  }
+  return true;
+};
+
 
 const createInitialElements = () => {
   let wizardHtml = `

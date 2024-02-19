@@ -24,7 +24,7 @@ const createTasks = (tasks) => {
       <div class='ReportBorder'> </div>
       <div class='TaskBtn'>
         <button class='ReportButton' onclick="NavigateToDetails('${task.entity}',${task.id})" data-toggle="modal" data-target="#taskModal')">VIEW DETAILS</button>
-        <button class='ReportButton' data-toggle="modal" data-target="#taskModal" data-taskId=${task.id} onclick="setTaskId(${task.id}, '${task.entity}')">CHANGE STATUS</button>
+        <button class='ReportButton' data-toggle="modal" data-target="#taskModal" data-taskId=${task.id} onclick="setTaskId(${task.id}, '${task.entity}', '${task.status}')">CHANGE STATUS</button>
       </div>
     </div>
   `
@@ -34,9 +34,10 @@ const createTasks = (tasks) => {
   const tasksCaller=(tasks)=>{
       $(".tasks").html(createTasks(tasks))
   }
-  function setTaskId(id,et){
+  function setTaskId(id,et, status){
     taskId = id;
     entity = et;
+    showNextStatus(status);
   }
 
   function changeTaskStatus(){
@@ -48,6 +49,32 @@ const createTasks = (tasks) => {
         window.location.reload();
       }
     });
+  }
+
+  //create a function which takes a status string and only shows next status options. i.e if status is pending then only show in progress and completed and so on
+  function showNextStatus(status){
+    let statusArray = [];
+    switch(status){
+      case "Pending":
+        statusArray = ["In Progress", "Completed"];
+        break;
+      case "In Progress":
+        statusArray = ["Completed"];
+        break;
+      case "InProgress":
+        statusArray = ["Completed"];
+        break;
+      case "Completed":
+        statusArray = ["In Progress"];
+        break;
+    }
+    let html = "";
+    for (const iterator of statusArray) {
+      html += `<input type="radio" id="status1" checked name="status" value="${iterator}">
+      <label for="status1">${iterator}</label> <br>`
+    }
+
+    $("#changeStatusModalBody").html(html);
   }
 
   const NavigateToDetails = (entity,id) => {

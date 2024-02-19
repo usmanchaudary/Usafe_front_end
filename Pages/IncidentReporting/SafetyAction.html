@@ -176,6 +176,8 @@
         let targetTime = $('#targetTime').val();
         let siteId = getValue("siteId");
         let userId = getValue("userName");
+        
+        
         let data = {
             "department": department,
             "area": area,
@@ -189,6 +191,20 @@
             "userId": userId,
             "resultArray": resultArray
         };
+        //add validation here to validate if any field is empty. if empty then return and show alert
+        if(resultArray.length == 0){
+            alert("Please add atleast one action");
+            return;
+        }
+        for (const key in data) {
+            if (data.hasOwnProperty(key)) {
+                const element = data[key];
+                if(element == "" || element == null || element == "Select Area" || element == "Select Department" || element == "0"){
+                    alert("Please fill all the fields " + key);
+                    return;
+                }
+            }
+        }
         sendRequest(`SafetyActionMeeting/SaveSafetyActionMeeting`, "POST", JSON.stringify(data), (response) => {
             if(response.status == 200){
                 alert("Data Saved Successfully");
@@ -225,6 +241,14 @@
         $('#tableBody').append(html);
         srno++;
     }
+
+    //on modal open clear the fields
+    $('#VoteModal').on('hide.bs.modal', function (e) {
+        $('#Actions').val("");
+        $('#RaisedBy').val("");
+        $('#Responsible').val("");
+        $('#targetDate').val("");
+    });
 
     const openEditModal = (srno) => {
         let action = resultArray.find(x => x.srno == srno);

@@ -12,8 +12,7 @@ const sendRequest = (url, method, body, successCallback) => {
     success: successCallback
       ? successCallback
       : (data) => {
-          alert("successfully submitted the data");
-         // window.location.reload();
+          swalSuccess("Data Saved Successfully");
         },
     error: (xhr, ajaxOptions, thrownError) => {
       if(xhr.status === 401){
@@ -44,8 +43,7 @@ const sendRequestWithFiles = (url, method, body, successCallback) => {
     success: successCallback
       ? successCallback
       : (data) => {
-          alert("successfully submitted the data");
-          window.location.reload();
+          swalSuccess("Data Saved Successfully");
         },
     error: (xhr, ajaxOptions, thrownError) => {
       if(xhr.status === 401){
@@ -55,7 +53,34 @@ const sendRequestWithFiles = (url, method, body, successCallback) => {
         return;
       }
       $('button').attr('disabled',false);
-      alert("some error occured");
+      swalNotification("some error occured", "error");
     },
   });
 };
+
+const swalNotification = (message, type)=>{
+  //if success message then add a timeout of 2 seconds
+
+  swal.fire({
+    title: type == "success" ? "Good job!" : "Oops!",
+    text: message,
+    icon: type,
+    button: "Aww yiss!",
+  });
+  
+}
+
+function swalSuccess(message){
+  swal.fire({
+    title: "Data Saved Successfully",
+    text: message,
+    icon: "success",
+    showCancelButton: false,
+    confirmButtonColor: "#3085d6",
+    confirmButtonText: "Yes, Goood Job!",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      window.location.reload();
+    }
+  });
+}

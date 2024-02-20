@@ -26,7 +26,7 @@ function getFormValues(formId, url, obj) {
       fieldType !== "button"
     ) {
       if (element.value.includes("Select") || element.value === "" && fieldType !== "file") {
-        alert("Please select a value for " + element.id);
+        swalNotification("Please select a value for " + element.id, "warning");
         //border color change to red
         element.style.borderColor = "red";
         $(obj).attr("disabled", false);
@@ -96,7 +96,7 @@ function getMultipleSelectValues(selectElement) {
 
 function validateForm(element, obj) {
   if (element.value.includes("Select") || element.value === "") {
-    alert("Please select a value for " + element.id);
+    swalNotification("Please select a value for " + element.id, "warning");
     //border color change to red
     element.style.borderColor = "red";
     $(obj).attr("disabled", false);

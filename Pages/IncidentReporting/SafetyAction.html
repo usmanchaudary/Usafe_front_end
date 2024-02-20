@@ -29,7 +29,12 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
-
+        <script src="
+        https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.all.min.js
+        "></script>
+        <link href="
+        https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.min.css
+        " rel="stylesheet">
 </head>
 
 <body>
@@ -193,25 +198,24 @@
         };
         //add validation here to validate if any field is empty. if empty then return and show alert
         if(resultArray.length == 0){
-            alert("Please add atleast one action");
+            swalNotification("Please add atleast one action","warning");
             return;
         }
         for (const key in data) {
             if (data.hasOwnProperty(key)) {
                 const element = data[key];
                 if(element == "" || element == null || element == "Select Area" || element == "Select Department" || element == "0"){
-                    alert("Please fill all the fields " + key);
+                    swalNotification(`Please provide value for the ${key} field `,"warning");
                     return;
                 }
             }
         }
         sendRequest(`SafetyActionMeeting/SaveSafetyActionMeeting`, "POST", JSON.stringify(data), (response) => {
             if(response.status == 200){
-                alert("Data Saved Successfully");
-                location.href = "/Pages/reportingType.html";
+                swalSuccess("Data Saved Successfully")
             }
             else{
-                alert("Error Occured");
+                swalNotification("Data Not Saved", "error");
             }
         });
 
@@ -328,6 +332,7 @@
 
         });
     };
+
 </script>
 
 </html>

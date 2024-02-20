@@ -169,7 +169,7 @@ const submitResultSet = (obj) => {
   let siteId = localStorage.getItem("siteId");
   let department = $("#department option:selected").text();
   let area = $("#area option:selected").text();
- 
+  console.log(department, area);
   if(!validateChecklist(department, area))
   {
     currentIndex = 0;
@@ -194,20 +194,19 @@ const submitResultSet = (obj) => {
   sendRequest(`api/checklist/saveCheckList`, "POST", JSON.stringify(resultSet),result =>{
     console.log(result);
     if(result.status == 200){
-      alert("Checklist Saved Successfully");
-      window.location.reload();
+      swalSuccess("Checklist Saved Successfully");
     }
   });
 };
 
 const validateChecklist = (department, area) => {
   if (department == "Select Department") {
-    alert("Please select department");
+    swalNotification("Please select department", "warning");
   
     return false;
   }
-  if (area == "Select Area") {
-    alert("Please select area");
+  if (area == " Select Area ") {
+    swalNotification("Please select area", "warning");
      
     return false;
   }
@@ -219,12 +218,12 @@ const validateChecklist = (department, area) => {
   );
   let nonCompliantWithNoActions = nonCompliant.filter((x) => x.actions == "");
   if (nonCompliantWithNoResponsibility.length > 0) {
-    alert("Please select responsible person for non-compliant checkpoint "+ nonCompliantWithNoResponsibility.map(x=>x.questionId).join(","));
+    swalNotification("Please select responsible person for non-compliant checkpoint "+ nonCompliantWithNoResponsibility.map(x=>x.questionId).join(","), "warning");
      
     return false;
   }
   if (nonCompliantWithNoActions.length > 0) {
-    alert(`Please provide actions for non-compliant checkpoint ${nonCompliantWithNoActions.map(x=>x.questionId).join(",")}`);
+    swalNotification(`Please provide actions for non-compliant checkpoint ${nonCompliantWithNoActions.map(x=>x.questionId).join(",")}`, "warning");
    
     return false;
   }
@@ -296,3 +295,4 @@ const getResponsiblePersons = (obj) => {
 
   });
 };
+

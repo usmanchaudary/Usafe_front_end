@@ -45,8 +45,7 @@ const createTasks = (tasks) => {
     let status = $("input[name='status']:checked").val();
     sendRequest(`api/ChangeForm/changeTaskStatus?id=${taskId}&entity=${entity}&taskValue=${status}`,'POST',{},(data)=>{
       if(data){
-        alert("Status Changed Successfully");
-        window.location.reload();
+        swalSuccess("Status Changed Successfully");
       }
     });
   }

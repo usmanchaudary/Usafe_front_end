@@ -29,7 +29,7 @@ const Login = () => {
             localStorage.setItem("expiryDate", expiryDate);
         }
         else{    
-            alert(data.message);
+            swalNotification(data.message, "error");
         }
     }
    });

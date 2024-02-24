@@ -2,8 +2,8 @@ var _currentCheckList = "";
 var responsiblePersons = [];
 let sectionFor = getValue("sectionFor");
 const GenericQuestioneerProcessor = (sectionName) => {
-  sendRequest(`api/checklist/getQuestions?checkListFormName=${sectionFor}&formName=${sectionName}`,'GET',null, (data) => {
-    let section = data.find(x=>x.sectionName == sectionName);
+  sendRequest(`api/checklist/getQuestions?checkListFormName=${sectionFor}&formName=${sectionName}`, 'GET', null, (data) => {
+    let section = data.find(x => x.sectionName == sectionName);
     _currentCheckList = section.sectionName; // this will be used at the time of submission
     let questions = section.questions;
     //need to create a form wizard which will be used to display the questions one by one with next and previous buttons
@@ -65,8 +65,8 @@ const createChecklistFormWizard = (questions) => {
 
   // Resulting page with accordion
   let resultHtml = "";
-    resultHtml = createResultHtml(questions);
-   resultHtml += `<button class="btn btn-dark btn-block mt-lg-3" style="background-color: black; color: white;" onclick="submitResultSet(this)">Submit</button>
+  resultHtml = createResultHtml(questions);
+  resultHtml += `<button class="btn btn-dark btn-block mt-lg-3" style="background-color: black; color: white;" onclick="submitResultSet(this)">Submit</button>
   </div>
 `;
   return { wizardHtml, resultHtml };
@@ -83,14 +83,17 @@ const showForm = (index) => {
 };
 
 const handleNext = (length, questions) => {
-  if (currentIndex < length) {
-    currentIndex++;
-    showForm(currentIndex);
-  } else {
-    showForm(currentIndex);
-    $("#wizardContainer").css("display", "none");
-    $("#resultContainer").css("display", "block");
-    displayResults(questions);
+
+  if (validateChecklist(currentIndex)) {
+    if (currentIndex < length) {
+      currentIndex++;
+      showForm(currentIndex);
+    } else {
+      showForm(currentIndex);
+      $("#wizardContainer").css("display", "none");
+      $("#resultContainer").css("display", "block");
+      displayResults(questions);
+    }
   }
 };
 
@@ -170,8 +173,7 @@ const submitResultSet = (obj) => {
   let department = $("#department option:selected").text();
   let area = $("#area option:selected").text();
   console.log(department, area);
-  if(!validateChecklist(department, area))
-  {
+  if (!validateWholeCheckList(department, area)) {
     currentIndex = 0;
     handleNext(_questions.length, _questions);
     resultSet.length = 0;
@@ -191,15 +193,15 @@ const submitResultSet = (obj) => {
   };
 
   console.log(resultSet);
-  sendRequest(`api/checklist/saveCheckList`, "POST", JSON.stringify(resultSet),result =>{
+  sendRequest(`api/checklist/saveCheckList`, "POST", JSON.stringify(resultSet), result => {
     console.log(result);
-    if(result.status == 200){
+    if (result.status == 200) {
       swalSuccess("Checklist Saved Successfully");
     }
   });
 };
 
-const validateChecklist = (department, area) => {
+const validateWholeCheckList = (department, area) => {
   if (department == "Select Department") {
     swalNotification("Please select department", "warning");
   
@@ -226,6 +228,41 @@ const validateChecklist = (department, area) => {
     swalNotification(`Please provide actions for non-compliant checkpoint ${nonCompliantWithNoActions.map(x=>x.questionId).join(",")}`, "warning");
    
     return false;
+  }
+  return true;
+};
+
+const validateChecklist = (index) => {
+  let department = $("#department option:selected").text();
+  let area = $("#area option:selected").text();
+  if (index == 0) {
+
+    if (department == "Select Department") {
+      swalNotification("Please select department", "warning");
+      return false;
+    }
+    if (area == " Select Area ") {
+      swalNotification("Please select area", "warning");
+      return false;
+    }
+  }
+  else {
+    //get the values of the current question
+    const compliance = document.querySelector(`#compliance${index}:checked`);
+    const status = document.getElementById(`status${index}`);
+    const actions = document.getElementById(`actions${index}`);
+    const responsibility = document.getElementById(`responsibility${index}`);
+    //if compliance is set to non compliant then check for action value and responsibility value
+    if (compliance.value == "NonCompliant") {
+      if (actions.value == "") {
+        swalNotification("Please enter actions", "warning");
+        return false;
+      }
+      if (responsibility.value == "Select Responsible Person") {
+        swalNotification("Please select responsible person", "warning");
+        return false;
+      }
+    }
   }
   return true;
 };

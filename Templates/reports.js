@@ -1,9 +1,9 @@
 const reports = (imageSrc, status, formName, assignedTo, date,entity,id) => {
-  return `<div class='ReportContainer'>
+  return `<div class='ReportContainer' style="padding-bottom: 14rem;background-color: whitesmoke;border-radius: 20px">
       <div class='ReportContent'>
 
         <div class='ReportImage'>
-          <img src="${imageSrc}" alt="no image found"/>
+          <img src="${imageSrc}" alt="Image not available"/>
         </div>
 
         
@@ -16,7 +16,7 @@ const reports = (imageSrc, status, formName, assignedTo, date,entity,id) => {
 
         <div class='ReportDescriptions'>
           <p>${status}</p>
-          <p>${formName}</p>
+          <p style="text-wrap:nowrap">${formName}</p>
           <p title = ${assignedTo}>${addStars(assignedTo)}</p>
           <p>${new Date(date).toDateString()}</p>
         </div>

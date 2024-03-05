@@ -8,15 +8,12 @@
     /* margin-top: 15px; */
 }
 .DropHeaders{
-    font-size: 14px;
+    font-size: 17px;
     margin:0;
-    color: gray;
     margin-top: 35px;
+    font-weight: bold;
 }
 svg.DropIcon {
     margin-top: 35px;
     margin-bottom: 10px;
-}
-.DropContainer{
-
 }

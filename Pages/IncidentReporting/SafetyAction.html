@@ -127,7 +127,7 @@
 
 
     <!-- Modal -->
-    <div class="modal fade" id="VoteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <div class="modal fade" id="VoteModal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -150,12 +150,12 @@
                     <select class="form-control responsiblity" id="Responsible"></select>
 
                     <p class="taskMHeading mt-sm-1">Target Date</p>
-                    <input class="targetDate" type="date" id="targetDate" name="targetDate">
+                    <input class="targetDate" type="date" id="actionDate" name="targetDate">
 
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-warning btn-block" onclick="addAction()"data-dismiss="modal">Done</button>
+                    <button type="button" class="btn btn-warning btn-block" onclick="addAction()">Done</button>
                 </div>
             </div>
         </div>
@@ -206,6 +206,8 @@
                 const element = data[key];
                 if(element == "" || element == null || element == "Select Area" || element == "Select Department" || element == "0"){
                     swalNotification(`Please provide value for the ${key} field `,"warning");
+                    //donot hide the modal
+                    
                     return;
                 }
             }
@@ -225,14 +227,25 @@
         let description = $('#Actions').val();
         let raisedBy = $('#RaisedBy').val();
         let responsible = $('#Responsible :selected').val();
-        let targetDate = $('#targetDate').val();
-        resultArray.push({
+        let actionDate = $('#actionDate').val();
+        let obj = {
             "description": description,
             "raisedBy": raisedBy,
             "responsible": responsible,
-            "targetDate": targetDate,
+            "targetDate": actionDate,
             srno
-        });
+        };
+        //if any field is empty then return and show alert
+        for (const key in obj) {
+            if (obj.hasOwnProperty(key)) {
+                const element = obj[key];
+                if(element == "" || element == null || element == "Select Responsible Person"){
+                    swalNotification(`Please provide value for the ${key} field `,"warning");
+                    return;
+                }
+            }
+        }
+        resultArray.push();
         let html = `<tr>
                 <td>${srno}</td>
                 <td>${description}</td>
@@ -244,6 +257,7 @@
             </tr>`
         $('#tableBody').append(html);
         srno++;
+        $('#VoteModal').modal('hide');
     }
 
     //on modal open clear the fields

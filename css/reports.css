@@ -7,8 +7,7 @@ body{
     display: flex;
     flex-direction: column;
     border: 2px solid white;
-    border-top:6px solid white;
-    height: 222px;
+    border-top:8px solid white;
 }
 
 .ReportContent{
@@ -72,7 +71,7 @@ body{
        padding: 10px;
    }
    .ReportContainer p{
-    padding-top: 15px;
+    padding-top: 0px;
    }
    .ReportImage{
        width:50%;
@@ -81,16 +80,16 @@ body{
     width: auto;
    }
    .ReportHeadings{
-       width:24%;
+       width:26%;
    }
 }
 @media (max-width: 420px) {
  
     .ReportHeadings{
-        width:20%;
+        width:22%;
     }
     .ReportContainer p{
-        padding-top: 8px;
+        padding-top: 0px;
        }
     .ReportImage {
         width: 45%;

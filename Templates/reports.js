@@ -1,5 +1,5 @@
-const reports = (imageSrc, status, formName, assignedTo, date,entity,id) => {
-  return `<div class='ReportContainer' style="padding-bottom: 14rem;background-color: whitesmoke;border-radius: 20px">
+const reports = (imageSrc, status, formName, assignedTo, date, entity, id) => {
+  return `<div class='ReportContainer' style="background-color: whitesmoke;border-radius: 20px">
       <div class='ReportContent'>
 
         <div class='ReportImage'>
@@ -15,15 +15,16 @@ const reports = (imageSrc, status, formName, assignedTo, date,entity,id) => {
         </div>
 
         <div class='ReportDescriptions'>
-          <p>${status}</p>
+          <p style="color:${status.toLowerCase() == 'pending'? 'blue':'green'}">${status}</p>
           <p style="text-wrap:nowrap">${formName}</p>
           <p title = ${assignedTo}>${addStars(assignedTo)}</p>
-          <p>${new Date(date).toDateString()}</p>
+          <p style="color: red">${new Date(date).toDateString()}</p>
         </div>
 
       </div>
-      
-      <button class='btn btn-warning btn-block' onclick= "NavigateToDetails('${entity}',${id})">VIEW DETAILS</button>
+      <div style="margin-top: auto;">
+      <button class='btn btn-warning btn-block' onclick="NavigateToDetails('${entity}',${id})">VIEW DETAILS</button>
+      </div>
 
     </div>
   `;
@@ -31,12 +32,12 @@ const reports = (imageSrc, status, formName, assignedTo, date,entity,id) => {
 
 const fetchReports = () => {
   let username = localStorage.getItem("userName");
- 
-  sendRequest("api/ChangeForm/fetchReports?userName="+username, "GET",{}, (data) => {
+
+  sendRequest("api/ChangeForm/fetchReports?userName=" + username, "GET", {}, (data) => {
     reportCountCaller(data.length);
     let html = ``;
     for (const iterator of data) {
-      html += reports(iterator.files? JSON.parse(iterator.files)[0]: "", iterator.status, iterator.formName, iterator.assignedTo, iterator.createdDate, iterator.entity ,iterator.id);
+      html += reports(iterator.files ? JSON.parse(iterator.files)[0] : "", iterator.status, iterator.formName, iterator.assignedTo, iterator.createdDate, iterator.entity, iterator.id);
     }
     $(".reports").html(html);
   });
@@ -44,14 +45,14 @@ const fetchReports = () => {
 };
 fetchReports();
 
-const NavigateToDetails = (entity,id) => {
-  window.location.href = "/Pages/reportDeatails/reportDetails.html?entity="+entity+"&id="+id;
+const NavigateToDetails = (entity, id) => {
+  window.location.href = "/Pages/reportDeatails/reportDetails.html?entity=" + entity + "&id=" + id;
 };
 
 //create a function which takes a string and add stars if length is greater than 20
-function addStars(str){
-  if(str.length > 20){
-    return str.slice(0,10) + "....";
+function addStars(str) {
+  if (str.length > 20) {
+    return str.slice(0, 10) + "....";
   }
   return str;
 }

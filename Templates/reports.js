@@ -3,7 +3,8 @@ const reports = (imageSrc, status, formName, assignedTo, date, entity, id) => {
       <div class='ReportContent'>
 
         <div class='ReportImage'>
-          <img src="${imageSrc}" alt="Image not available"/>
+        
+          <img src="${imageSrc? imageSrc: '../no-document.png'}" style="height: ${imageSrc? '150px':'100px'}" alt="Image not available"/>
         </div>
 
         
@@ -23,7 +24,7 @@ const reports = (imageSrc, status, formName, assignedTo, date, entity, id) => {
 
       </div>
       <div style="margin-top: auto;">
-      <button class='btn btn-warning btn-block' onclick="NavigateToDetails('${entity}',${id})">VIEW DETAILS</button>
+      <button class='btn btn-warning btn-block' style="background: linear-gradient(45deg, #ffeb3b, #ff9800);" onclick="NavigateToDetails('${entity}',${id})">VIEW DETAILS</button>
       </div>
 
     </div>

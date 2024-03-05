@@ -80,7 +80,8 @@ function swalSuccess(message){
     confirmButtonText: "Yes, Goood Job!",
   }).then((result) => {
     if (result.isConfirmed) {
-      window.location.reload();
+      // window.location.reload();
+      window.location.href = "/Pages/reporting/reporting.html";
     }
   });
 }

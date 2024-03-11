@@ -22,9 +22,12 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.all.min.js
 <link href="
 https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.min.css
 " rel="stylesheet">
+<link rel="stylesheet" href="../../../css/loader.css">
 </head>
 
 <body>
+  <span style="display: none;" id="load"></span>
+
     <form class="formLogin">
         <div class="logo">
             <img src="../../../assets/usafeLogo.png" alt="logo" />
@@ -64,10 +67,13 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.min.css
             <span class="urdu-text" lang="ur">لاگ ان</span>
         </button>
 
-        <select class="input-field" style="margin-top:5%" id="languageSelect" onchange="changePlaceholder()">
-            <option value="en">English</option>
-            <option value="ur">Urdu</option>
-        </select>
+        <div style="margin-top:5%" class="form-group">
+            <label style="font-weight: bold;">Select Language</label>
+            <select class="input-field" id="languageSelect" onchange="changePlaceholder()">
+                <option value="en">English</option>
+                <option value="ur">Urdu</option>
+            </select>
+        </div>
     </form>
     
 

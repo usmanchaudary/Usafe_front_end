@@ -16,13 +16,13 @@ const createInitialCommonTemplate = (element) => {
 const createInputElements = (element) => {
   const name =
     selectedLanguage === "ur" && element.urdu ? element.urdu : element.name;
-  if (element.type == "file") {
+  // if (element.type == "file") {
 
-    return createFileInput(element);
-  }
+  //   return createFileInput(element);
+  // }
   return `<div class="form-group">
     <label for="${element.name}">${name}</label>
-    <${element.elementTag} type="${element.type}" ${element.multiple} class="form-control" id="${element.name}" placeholder="${element.name}" col="10" row="20" ></${element.elementTag}>
+    <${element.elementTag} capture="environment" type="${element.type}" ${element.multiple} class="form-control" id="${element.name}" placeholder="${element.name}" col="10" row="20" ></${element.elementTag}>
     </div>`;
 };
 
@@ -39,11 +39,8 @@ const createDevExtremeFileUploader = (element) => {
     uploadMode: "useForm",
     name: "pictures",
     multiple: false,
-    uploadCustomData: {
-      capture: "environment"
-    },
     elementAttr: {
-      capture: "environment"
+      id: "pichipichipocha"
     }
   });
 };

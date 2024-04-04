@@ -30,15 +30,21 @@ const createFileInput = (element) => {
   return `<div id="fileuploader-container">
     <div id="file-uploader"></div>
   </div>`;
-}; 
+};
 
 const createDevExtremeFileUploader = (element) => {
   $("#file-uploader").dxFileUploader({
     selectButtonText: "Select photo",
     labelText: '',
     uploadMode: "useForm",
-    name:"pictures",
+    name: "pictures",
     multiple: false,
+    uploadCustomData: {
+      capture: "environment"
+    },
+    elementAttr: {
+      capture: "environment"
+    }
   });
 };
 
@@ -47,15 +53,12 @@ const createSelectElements = (element) => {
     selectedLanguage === "ur" && element.urdu ? element.urdu : element.name;
   let html = `<div class="form-group">
                 <label for="${element.name}">${name}</label>
-                <select class="form-control" id="${element.name}" data-api="${
-    element.api
-  }"  data-textField=${element.textField} data-valueField=${
-    element.valueField
-  } data-childName="${element.child}" ${
-    element.type === "cascaded"
+                <select class="form-control" id="${element.name}" data-api="${element.api
+    }"  data-textField=${element.textField} data-valueField=${element.valueField
+    } data-childName="${element.child}" ${element.type === "cascaded"
       ? `onchange="${element.populateFunction}(this)"`
       : ""
-  }>
+    }>
                 <option selected disabled hidden>Select</option>
                 `;
   if (!element.Parent) {

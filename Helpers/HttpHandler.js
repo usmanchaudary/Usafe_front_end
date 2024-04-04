@@ -24,6 +24,7 @@ const sendRequest = (url, method, body, successCallback) => {
       //if any button is disabled then enable it
       $('button').attr('disabled',false);
       alert("some error occured");
+      $('#load').hide();
     },
   });
 };

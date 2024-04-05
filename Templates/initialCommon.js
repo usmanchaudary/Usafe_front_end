@@ -40,6 +40,7 @@ const createCustomCameraInput = (element) => {
       <a href="#camera" class="btn btn-primary" >Open Camera</a>
     </div>
   </div>
+  <p id="status"></p>
   `;
 }
 

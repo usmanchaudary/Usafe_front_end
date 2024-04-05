@@ -16,15 +16,32 @@ const createInitialCommonTemplate = (element) => {
 const createInputElements = (element) => {
   const name =
     selectedLanguage === "ur" && element.urdu ? element.urdu : element.name;
-  // if (element.type == "file") {
+  if (element.type == "file") {
 
-  //   return createFileInput(element);
-  // }
+    return createCustomCameraInput(element);
+  }
   return `<div class="form-group">
     <label for="${element.name}">${name}</label>
     <${element.elementTag} accept="image/*" capture="user" type="${element.type}" ${element.multiple} class="form-control" id="${element.name}" placeholder="${element.name}" col="10" row="20" ></${element.elementTag}>
     </div>`;
 };
+
+const createCustomCameraInput = (element) => {
+  return `<div class="row">
+  <div class="col-md-6">
+    <div class="form-group">
+      <label for="${element.name}">Upload File</label>
+      <input type="file" class="form-control" id="${element.name}">
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="form-group">
+      <label for="${element.name}">Take Picture</label> <br>
+      <a href="#camera" class="btn btn-primary" >Open Camera</a>
+    </div>
+  </div>
+  `;
+}
 
 const createFileInput = (element) => {
   return `<div id="fileuploader-container">
@@ -74,3 +91,56 @@ const createSelectElements = (element) => {
             </div>`;
   return html;
 };
+
+
+//!SECTION Camera Image Capture
+//#region Camera Image Capture
+//create an empty image blob
+var imageBlob = null;
+
+function convertBase64ToBlob(base64) {
+    base64 = imageBlob;
+    var binary = atob(base64);
+    var array = [];
+    for (var i = 0; i < binary.length; i++) {
+        array.push(binary.charCodeAt(i));
+    }
+    return new Blob([new Uint8Array(array)], { type: 'image/jpeg' });
+}
+function passBlobToInputElement(blob) {
+    if (!blob) alert('No image data');
+    //change status
+    document.getElementById('status').innerText = blob;
+    var file = new File([blob], "image.jpg", { type: 'image/jpeg' });
+    // Create a FileList object containing the File object
+    // Create a new file input element
+    var fileInput = document.createElement('input');
+    fileInput.type = 'file';
+    fileInput.accept = 'image/*'; // Set the accept attribute to allow only image files
+    fileInput.capture = 'user'; // Set the capture attribute to indicate user-facing camera
+    fileInput.multiple = true; // Allow multiple files to be selected
+    fileInput.classList.add('form-control'); // Add any existing classes
+    fileInput.id = 'Photo'; // Set the id attribute
+    fileInput.placeholder = 'Photo'; // Set the placeholder attribute
+
+    // Create a DataTransfer object and add the File object
+    var dataTransfer = new DataTransfer();
+    dataTransfer.items.add(file);
+
+    // Assign the DataTransfer object to the input element's files property
+    Object.defineProperty(fileInput, 'files', {
+        value: dataTransfer.files,
+        writable: false
+    });
+
+    // Get reference to the existing file input element
+    var existingFileInput = document.getElementById('Photo');
+
+    // Replace the existing file input element with the new one
+    existingFileInput.parentNode.replaceChild(fileInput, existingFileInput);
+    //status
+    document.getElementById('status').innerText = 'Image data passed to input element';
+}
+
+//#endregion
+

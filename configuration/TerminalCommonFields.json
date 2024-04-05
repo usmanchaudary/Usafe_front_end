@@ -1,6 +1,6 @@
 [
     {
-        "name": "Upload Photos",
+        "name": "Photo",
         "elementTag": "input",
         "type": "file",
         "multiple": "multiple",

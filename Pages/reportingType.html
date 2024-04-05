@@ -20,8 +20,12 @@
     <link href="
     https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.min.css
     " rel="stylesheet">
+  <link rel="stylesheet" href="../css/loader.css">
+
 </head>
 <body>
+  <span id="load"></span>
+
     <div id="header"></div>
     <div class="container">
         <div id="reportingTypes">
@@ -29,5 +33,17 @@
         </div>
     </div>
     <script src="../Js/HeaderTitle.js"></script>
+    <script>
+        //create an on focus event and onfocus call fetchReport Function
+        document.onreadystatechange = function () {
+          var state = document.readyState
+          if (state == 'complete') {
+            setTimeout(function () {
+              document.getElementById('interactive');
+              document.getElementById('load').style.visibility = "hidden";
+            }, 1000);
+          }
+        }
+      </script>
 </body>
 </html>

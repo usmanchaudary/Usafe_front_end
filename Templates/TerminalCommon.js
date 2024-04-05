@@ -9,6 +9,5 @@ const createTerminalCommonTemplate = (element) => {
       html = createSelectElements(element);
       break;
   }
-  createDevExtremeFileUploader(element);
   return html;
 }

@@ -140,7 +140,7 @@ function passBlobToInputElement(blob) {
     // Replace the existing file input element with the new one
     existingFileInput.parentNode.replaceChild(fileInput, existingFileInput);
     //status
-    document.getElementById('status').innerText = 'Image data passed to input element';
+    document.getElementById('status').innerText = 'image saved in the input element';
 }
 
 //#endregion
